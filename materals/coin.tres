@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://drukrtlena1w3"]
+
+[resource]
+albedo_color = Color(1, 0.815686, 0, 1)
+metallic = 1.0
+roughness = 0.64
+emission = Color(1, 0.815686, 0, 1)
+emission_energy_multiplier = 4.87

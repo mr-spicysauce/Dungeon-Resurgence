@@ -1,0 +1,371 @@
+[gd_scene load_steps=19 format=3 uid="uid://dfnv3d3t5br26"]
+
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_kochb"]
+[ext_resource type="Script" path="res://scripts/player_scripts/Sheild_bar.gd" id="1_qpcqc"]
+[ext_resource type="PackedScene" uid="uid://bdb14lpbxj3ie" path="res://scripts/player_scripts/inventry_system.tscn" id="1_r4xxl"]
+[ext_resource type="Texture2D" uid="uid://big548m5i4tnn" path="res://recorces/GUI/shield icon.png" id="2_swpj8"]
+[ext_resource type="Texture2D" uid="uid://cif77ivtuq32l" path="res://recorces/GUI/stats bar.png" id="3_gmlvk"]
+[ext_resource type="FontFile" uid="uid://bwhmtrx4idt2x" path="res://recorces/fonts/Lexend-SemiBold.ttf" id="4_4bgo6"]
+[ext_resource type="Script" path="res://scripts/player_scripts/Health_Bar.gd" id="5_24yf1"]
+[ext_resource type="Texture2D" uid="uid://dun4aqo1gh70o" path="res://recorces/GUI/health icon.png" id="6_gikuk"]
+[ext_resource type="Script" path="res://scripts/player_scripts/HotBar.gd" id="7_b6ec7"]
+[ext_resource type="Texture2D" uid="uid://tg0wtbcpt4ed" path="res://recorces/GUI/Hotbar slot.png" id="8_4h1wh"]
+[ext_resource type="Script" path="res://scripts/player_scripts/Coin_Counter.gd" id="9_h1ffi"]
+[ext_resource type="Texture2D" uid="uid://bvik8jgxww43s" path="res://recorces/GUI/Coin_background.png" id="10_84xtd"]
+[ext_resource type="Theme" uid="uid://dg7yqs5xm6yb3" path="res://recorces/themes/Menu_theme.tres" id="12_wqvif"]
+[ext_resource type="Theme" uid="uid://dqa7rgvfsa0gk" path="res://recorces/themes/Popup_box.tres" id="14_85tcj"]
+
+[sub_resource type="Theme" id="Theme_o0bxk"]
+Label/fonts/font = ExtResource("4_4bgo6")
+
+[sub_resource type="Animation" id="Animation_uj7k3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("esc_menu:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("esc_menu:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3ccr2"]
+resource_name = "open_esc"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("esc_menu:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("esc_menu:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-200, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k4s3c"]
+_data = {
+"RESET": SubResource("Animation_uj7k3"),
+"open_esc": SubResource("Animation_3ccr2")
+}
+
+[node name="HUD" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kochb")
+
+[node name="InventrySystem" parent="." instance=ExtResource("1_r4xxl")]
+
+[node name="Stats_Margin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -436.0
+offset_top = -96.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Stats" type="VBoxContainer" parent="Stats_Margin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Stats_Margin/Stats"]
+layout_mode = 2
+theme_override_constants/separation = 4
+script = ExtResource("1_qpcqc")
+
+[node name="SheildIcon" type="TextureRect" parent="Stats_Margin/Stats/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("2_swpj8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Sheild_bar" type="TextureProgressBar" parent="Stats_Margin/Stats/HBoxContainer"]
+layout_mode = 2
+value = 100.0
+texture_progress = ExtResource("3_gmlvk")
+
+[node name="Sheild_bar_lable" type="Label" parent="Stats_Margin/Stats/HBoxContainer/Sheild_bar"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -21.5
+offset_right = 200.0
+offset_bottom = 21.5
+grow_vertical = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_o0bxk")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "100/100
+"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Stats_Margin/Stats"]
+layout_mode = 2
+script = ExtResource("5_24yf1")
+
+[node name="HealthIcon" type="TextureRect" parent="Stats_Margin/Stats/HBoxContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("6_gikuk")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Health_bar" type="TextureProgressBar" parent="Stats_Margin/Stats/HBoxContainer2"]
+modulate = Color(0.686275, 1, 0.607843, 1)
+layout_mode = 2
+value = 100.0
+texture_progress = ExtResource("3_gmlvk")
+
+[node name="health_bar_lable" type="Label" parent="Stats_Margin/Stats/HBoxContainer2/Health_bar"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -21.5
+offset_right = 200.0
+offset_bottom = 21.5
+grow_vertical = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_o0bxk")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "100/100
+"
+horizontal_alignment = 1
+
+[node name="HotBar_margin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -324.0
+offset_top = -150.0
+offset_right = 324.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 0
+theme_override_constants/margin_bottom = 16
+script = ExtResource("7_b6ec7")
+
+[node name="Hotbar" type="HBoxContainer" parent="HotBar_margin"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 16
+
+[node name="Slot_1" type="TextureRect" parent="HotBar_margin/Hotbar"]
+modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 2
+texture = ExtResource("8_4h1wh")
+
+[node name="Image" type="TextureRect" parent="HotBar_margin/Hotbar/Slot_1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 3
+
+[node name="Slot_2" type="TextureRect" parent="HotBar_margin/Hotbar"]
+modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 2
+texture = ExtResource("8_4h1wh")
+
+[node name="Image" type="TextureRect" parent="HotBar_margin/Hotbar/Slot_2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 3
+
+[node name="Slot_3" type="TextureRect" parent="HotBar_margin/Hotbar"]
+modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 2
+texture = ExtResource("8_4h1wh")
+
+[node name="Image" type="TextureRect" parent="HotBar_margin/Hotbar/Slot_3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 3
+
+[node name="Slot_4" type="TextureRect" parent="HotBar_margin/Hotbar"]
+modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 2
+texture = ExtResource("8_4h1wh")
+
+[node name="Image" type="TextureRect" parent="HotBar_margin/Hotbar/Slot_4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 3
+
+[node name="Slot_5" type="TextureRect" parent="HotBar_margin/Hotbar"]
+modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 2
+texture = ExtResource("8_4h1wh")
+
+[node name="Image" type="TextureRect" parent="HotBar_margin/Hotbar/Slot_5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 3
+
+[node name="Coin_MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+script = ExtResource("9_h1ffi")
+
+[node name="coin_background" type="TextureRect" parent="Coin_MarginContainer"]
+modulate = Color(1, 1, 1, 0.6)
+layout_mode = 2
+texture = ExtResource("10_84xtd")
+
+[node name="Coin_lable" type="Label" parent="Coin_MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_o0bxk")
+theme_override_font_sizes/font_size = 32
+text = "COINS: 0
+"
+
+[node name="esc_menu" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="esc_menu"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="esc_menu/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="continue" type="Button" parent="esc_menu/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("12_wqvif")
+text = "Continue"
+alignment = 0
+
+[node name="Settings" type="Button" parent="esc_menu/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("12_wqvif")
+text = "Settings
+"
+alignment = 0
+
+[node name="Save_and_quit" type="Button" parent="esc_menu/HBoxContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("12_wqvif")
+text = "Save and quit"
+alignment = 0
+
+[node name="Save_and_quit_normal" type="Button" parent="esc_menu/HBoxContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("12_wqvif")
+text = "Save and quit"
+alignment = 0
+
+[node name="Temp_quit" type="Button" parent="esc_menu/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("12_wqvif")
+text = "force quit (temp)"
+alignment = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_k4s3c")
+}
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
+size = Vector2i(541, 162)
+unresizable = true
+borderless = true
+theme = ExtResource("14_85tcj")
+dialog_text = "The game WILL save but quiting
+mid game still counts as a DEATH"
+
+[node name="ConfirmationDialog2" type="ConfirmationDialog" parent="."]
+size = Vector2i(487, 162)
+unresizable = true
+borderless = true
+theme = ExtResource("14_85tcj")
+dialog_text = "       The game just saved!
+Are you sure you want to quit?"
+
+[connection signal="pressed" from="esc_menu/HBoxContainer/VBoxContainer/continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="esc_menu/HBoxContainer/VBoxContainer/Save_and_quit" to="." method="_on_save_and_quit_pressed"]
+[connection signal="pressed" from="esc_menu/HBoxContainer/VBoxContainer/Save_and_quit_normal" to="." method="_on_save_and_quit_normal_pressed"]
+[connection signal="pressed" from="esc_menu/HBoxContainer/VBoxContainer/Temp_quit" to="." method="_on_temp_quit_pressed"]
+[connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_confirmed"]
+[connection signal="confirmed" from="ConfirmationDialog2" to="." method="_on_confirmation_dialog_2_confirmed"]

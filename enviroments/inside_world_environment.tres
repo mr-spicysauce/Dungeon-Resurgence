@@ -1,0 +1,16 @@
+[gd_resource type="Environment" format=3 uid="uid://bet2mmsyr0wmw"]
+
+[resource]
+background_mode = 1
+background_color = Color(1, 1, 1, 1)
+background_energy_multiplier = 0.1
+ambient_light_energy = 0.0
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.1406
+volumetric_fog_emission = Color(1, 1, 1, 1)
+volumetric_fog_emission_energy = 0.01
+volumetric_fog_sky_affect = 0.0

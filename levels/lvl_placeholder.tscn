@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://c10eslp0n0x44"]
+
+[ext_resource type="PackedScene" uid="uid://cnn2nmty721px" path="res://player/player.tscn" id="1_f2rx6"]
+[ext_resource type="Script" path="res://scripts/lvl_placeholder.gd" id="1_qfm7f"]
+[ext_resource type="Environment" uid="uid://bet2mmsyr0wmw" path="res://enviroments/inside_world_environment.tres" id="3_h1t13"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_be4r2"]
+size = Vector2(20, 20)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_foeh8"]
+data = PackedVector3Array(10, 0, 10, -10, 0, 10, 10, 0, -10, -10, 0, 10, -10, 0, -10, 10, 0, -10)
+
+[node name="Lvl_placeholder" type="Node3D"]
+script = ExtResource("1_qfm7f")
+
+[node name="Player" parent="." instance=ExtResource("1_f2rx6")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("3_h1t13")
+
+[node name="floor" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_be4r2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_foeh8")

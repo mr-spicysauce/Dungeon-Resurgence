@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://b8seis3u71gfo"]
+
+[ext_resource type="Texture2D" uid="uid://cmdhtod0oq8on" path="res://materals/marble pillar_albedo.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://d7msq1w8cauw" path="res://materals/marble pillar_orm.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://c6ebfsb72s76u" path="res://materals/marble pillar_normal.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://c5vyl7k87uhcc" path="res://materals/marble pillar_sss.png" id="6"]
+
+[resource]
+albedo_texture = ExtResource("1")
+roughness_texture = ExtResource("2")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3")
+subsurf_scatter_enabled = true
+subsurf_scatter_strength = 0.25
+subsurf_scatter_texture = ExtResource("6")

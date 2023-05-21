@@ -1,0 +1,517 @@
+[gd_scene load_steps=15 format=3 uid="uid://ct500abp555l4"]
+
+[ext_resource type="Theme" uid="uid://dg7yqs5xm6yb3" path="res://recorces/themes/Menu_theme.tres" id="1_87h80"]
+[ext_resource type="Script" path="res://scripts/death_screen.gd" id="1_sitnw"]
+[ext_resource type="Script" path="res://scripts/Death_screen_hotbar.gd" id="3_asga8"]
+[ext_resource type="Texture2D" uid="uid://tg0wtbcpt4ed" path="res://recorces/GUI/Hotbar slot.png" id="3_gq8ao"]
+[ext_resource type="Texture2D" uid="uid://cr3p8o7najfnu" path="res://recorces/GUI/selector.png" id="5_qr1gv"]
+
+[sub_resource type="Animation" id="Animation_sdgki"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/always lose:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/always lose2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarginContainer/MarginContainer:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MarginContainer:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MarginContainer/MarginContainer/HotBar_margin/Hotbar/Slot_1:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.784314)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MarginContainer/MarginContainer/HotBar_margin/Hotbar/Slot_2:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.784314)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MarginContainer/MarginContainer/HotBar_margin/Hotbar/Slot_3:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.784314)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("MarginContainer/MarginContainer/HotBar_margin/Hotbar/Slot_4:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.784314)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("MarginContainer/MarginContainer/HotBar_margin/Hotbar/Slot_5:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.784314)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("MarginContainer/MarginContainer/HotBar_margin/Hotbar/Slot_6:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.784314)]
+}
+
+[sub_resource type="Animation" id="Animation_8vhy6"]
+resource_name = "death"
+length = 13.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/always lose:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.1, 2.6, 3.1, 4.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/always lose2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(5.6, 7.1, 7.6, 9.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarginContainer/MarginContainer:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.1, 10.1, 11.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ujajq"]
+resource_name = "slot1_fade"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/MarginContainer/HotBar_margin/Hotbar/Slot_1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.784314), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_w0qft"]
+resource_name = "slot2_fade"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/MarginContainer/HotBar_margin/Hotbar/Slot_2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.784314), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3btj3"]
+resource_name = "slot3_fade"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/MarginContainer/HotBar_margin/Hotbar/Slot_3:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.784314), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_t0ca6"]
+resource_name = "slot4_fade"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/MarginContainer/HotBar_margin/Hotbar/Slot_4:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.784314), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yipu6"]
+resource_name = "slot5_fade"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/MarginContainer/HotBar_margin/Hotbar/Slot_5:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.784314), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gd42w"]
+resource_name = "slot6_fade"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/MarginContainer/HotBar_margin/Hotbar/Slot_6:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.784314), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mscts"]
+_data = {
+"RESET": SubResource("Animation_sdgki"),
+"death": SubResource("Animation_8vhy6"),
+"slot1_fade": SubResource("Animation_ujajq"),
+"slot2_fade": SubResource("Animation_w0qft"),
+"slot3_fade": SubResource("Animation_3btj3"),
+"slot4_fade": SubResource("Animation_t0ca6"),
+"slot5_fade": SubResource("Animation_yipu6"),
+"slot6_fade": SubResource("Animation_gd42w")
+}
+
+[node name="Death_screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sitnw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mscts")
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="always lose" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("1_87h80")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "In the end you always lose..."
+horizontal_alignment = 1
+
+[node name="always lose2" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("1_87h80")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "1 item will be lost"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+script = ExtResource("3_asga8")
+
+[node name="HotBar_margin" type="VBoxContainer" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="Hotbar" type="HBoxContainer" parent="MarginContainer/MarginContainer/HotBar_margin"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Slot_1" type="TextureRect" parent="MarginContainer/MarginContainer/HotBar_margin/Hotbar"]
+modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 2
+texture = ExtResource("3_gq8ao")
+
+[node name="Image" type="TextureRect" parent="MarginContainer/MarginContainer/HotBar_margin/Hotbar/Slot_1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 3
+
+[node name="selector" type="TextureRect" parent="MarginContainer/MarginContainer/HotBar_margin/Hotbar/Slot_1"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -44.0
+offset_top = -100.0
+offset_right = 44.0
+offset_bottom = -25.0
+grow_horizontal = 2
+texture = ExtResource("5_qr1gv")
+
+[node name="Slot_2" type="TextureRect" parent="MarginContainer/MarginContainer/HotBar_margin/Hotbar"]
+modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 2
+texture = ExtResource("3_gq8ao")
+
+[node name="Image" type="TextureRect" parent="MarginContainer/MarginContainer/HotBar_margin/Hotbar/Slot_2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 3
+
+[node name="selector" type="TextureRect" parent="MarginContainer/MarginContainer/HotBar_margin/Hotbar/Slot_2"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -44.0
+offset_top = -100.0
+offset_right = 44.0
+offset_bottom = -25.0
+grow_horizontal = 2
+texture = ExtResource("5_qr1gv")
+
+[node name="Slot_3" type="TextureRect" parent="MarginContainer/MarginContainer/HotBar_margin/Hotbar"]
+modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 2
+texture = ExtResource("3_gq8ao")
+
+[node name="Image" type="TextureRect" parent="MarginContainer/MarginContainer/HotBar_margin/Hotbar/Slot_3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 3
+
+[node name="selector" type="TextureRect" parent="MarginContainer/MarginContainer/HotBar_margin/Hotbar/Slot_3"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -44.0
+offset_top = -100.0
+offset_right = 44.0
+offset_bottom = -25.0
+grow_horizontal = 2
+texture = ExtResource("5_qr1gv")
+
+[node name="Slot_4" type="TextureRect" parent="MarginContainer/MarginContainer/HotBar_margin/Hotbar"]
+modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 2
+texture = ExtResource("3_gq8ao")
+
+[node name="Image" type="TextureRect" parent="MarginContainer/MarginContainer/HotBar_margin/Hotbar/Slot_4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 3
+
+[node name="selector" type="TextureRect" parent="MarginContainer/MarginContainer/HotBar_margin/Hotbar/Slot_4"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -44.0
+offset_top = -100.0
+offset_right = 44.0
+offset_bottom = -25.0
+grow_horizontal = 2
+texture = ExtResource("5_qr1gv")
+
+[node name="Slot_5" type="TextureRect" parent="MarginContainer/MarginContainer/HotBar_margin/Hotbar"]
+modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 2
+texture = ExtResource("3_gq8ao")
+
+[node name="Image" type="TextureRect" parent="MarginContainer/MarginContainer/HotBar_margin/Hotbar/Slot_5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 3
+
+[node name="selector" type="TextureRect" parent="MarginContainer/MarginContainer/HotBar_margin/Hotbar/Slot_5"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -44.0
+offset_top = -100.0
+offset_right = 44.0
+offset_bottom = -25.0
+grow_horizontal = 2
+texture = ExtResource("5_qr1gv")
+
+[node name="Slot_6" type="TextureRect" parent="MarginContainer/MarginContainer/HotBar_margin/Hotbar"]
+modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 2
+texture = ExtResource("3_gq8ao")
+
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer/HotBar_margin/Hotbar/Slot_6"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_87h80")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "10% of
+coins"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="selector" type="TextureRect" parent="MarginContainer/MarginContainer/HotBar_margin/Hotbar/Slot_6"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -44.0
+offset_top = -100.0
+offset_right = 44.0
+offset_bottom = -25.0
+grow_horizontal = 2
+texture = ExtResource("5_qr1gv")

@@ -1,0 +1,86 @@
+[gd_scene load_steps=3 format=3 uid="uid://dc5yft1fyvocb"]
+
+[ext_resource type="Script" path="res://scripts/Options_menu.gd" id="1_yd3lx"]
+[ext_resource type="Theme" uid="uid://dg7yqs5xm6yb3" path="res://recorces/themes/Menu_theme.tres" id="2_way3g"]
+
+[node name="HBox_Options_menu" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yd3lx")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Graphics_setting_button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_way3g")
+text = "Graphics"
+alignment = 0
+
+[node name="Graphics_setting_button2" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_way3g")
+text = "Audio"
+alignment = 0
+
+[node name="Back_to_mainmenu_button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_way3g")
+text = "Back"
+alignment = 0
+
+[node name="GraphicsMargin" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GraphicsMargin"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="resolution" type="VBoxContainer" parent="GraphicsMargin/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GraphicsMargin/VBoxContainer/resolution"]
+layout_mode = 2
+theme = ExtResource("2_way3g")
+text = "Resolution"
+horizontal_alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="GraphicsMargin/VBoxContainer/resolution"]
+layout_mode = 2
+
+[node name="FullScreenCheckBox" type="CheckBox" parent="GraphicsMargin/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_way3g")
+text = "Fullscreen"
+
+[node name="VsyncCheckBox" type="CheckBox" parent="GraphicsMargin/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_way3g")
+text = "Vsync
+"
+
+[node name="apply_graphics" type="Button" parent="GraphicsMargin/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_way3g")
+text = "Save and apply"
+alignment = 0
+
+[node name="Back_to_options" type="Button" parent="GraphicsMargin/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_way3g")
+text = "Back"
+alignment = 0
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Back_to_mainmenu_button" to="." method="_on_back_to_mainmenu_button_pressed"]

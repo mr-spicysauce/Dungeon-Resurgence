@@ -1,0 +1,32 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://dg7yqs5xm6yb3"]
+
+[ext_resource type="FontFile" uid="uid://bwhmtrx4idt2x" path="res://recorces/fonts/Lexend-SemiBold.ttf" id="1_1p2ga"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_augfr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gckt7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jb6nf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dhqka"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ki0ye"]
+
+[resource]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_focus_color = Color(0.305882, 0.305882, 0.305882, 1)
+Button/colors/font_hover_color = Color(0.305882, 0.305882, 0.305882, 1)
+Button/colors/font_outline_color = Color(1, 1, 1, 0)
+Button/colors/font_pressed_color = Color(0.427451, 0.427451, 0.427451, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 0)
+Button/font_sizes/font_size = 64
+Button/fonts/font = ExtResource("1_1p2ga")
+Button/styles/disabled = SubResource("StyleBoxEmpty_augfr")
+Button/styles/focus = SubResource("StyleBoxEmpty_gckt7")
+Button/styles/hover = SubResource("StyleBoxEmpty_jb6nf")
+Button/styles/normal = SubResource("StyleBoxEmpty_dhqka")
+Button/styles/pressed = SubResource("StyleBoxEmpty_ki0ye")
+CheckBox/constants/h_separation = 33
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/font_sizes/font_size = 64
+Label/fonts/font = ExtResource("1_1p2ga")

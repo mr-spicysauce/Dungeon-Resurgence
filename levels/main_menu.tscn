@@ -1,0 +1,965 @@
+[gd_scene load_steps=32 format=3 uid="uid://dyg4oqe12cdbr"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_q1bp6"]
+[ext_resource type="Theme" uid="uid://dg7yqs5xm6yb3" path="res://recorces/themes/Menu_theme.tres" id="2_wotep"]
+[ext_resource type="PackedScene" uid="uid://dc5yft1fyvocb" path="res://objects/option_menu.tscn" id="4_k1ati"]
+[ext_resource type="Script" path="res://scripts/Load_or_NewGame menu.gd" id="5_goguj"]
+[ext_resource type="PackedScene" uid="uid://bxth4m1sjarim" path="res://objects/outside_terrain.tscn" id="5_gsjx7"]
+[ext_resource type="Texture2D" uid="uid://tg1vndbwyhke" path="res://recorces/GUI/NEW_GAME_BACKGROUND.png" id="5_h3geq"]
+[ext_resource type="PackedScene" uid="uid://dtkn8o5g4kmse" path="res://scripts/load_game.tscn" id="5_svt7v"]
+[ext_resource type="Script" path="res://scripts/Load_Game_1.gd" id="6_2no2t"]
+[ext_resource type="PackedScene" uid="uid://c4bhv826qft2c" path="res://scripts/new_game.tscn" id="6_kcldr"]
+[ext_resource type="PackedScene" uid="uid://dj80fb6thkpvd" path="res://objects/fire_place.tscn" id="6_ys0h1"]
+[ext_resource type="PackedScene" uid="uid://dby0p01hdw4ev" path="res://scripts/save_game.tscn" id="7_a78t3"]
+[ext_resource type="Script" path="res://scripts/Load_Game_2.gd" id="10_387k6"]
+[ext_resource type="Theme" uid="uid://dqa7rgvfsa0gk" path="res://recorces/themes/Popup_box.tres" id="10_j86vm"]
+[ext_resource type="Script" path="res://scripts/Load_Game_3.gd" id="11_lay2n"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_jcrjp"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_clanw"]
+
+[sub_resource type="Sky" id="Sky_nc36x"]
+sky_material = SubResource("ProceduralSkyMaterial_clanw")
+
+[sub_resource type="Environment" id="Environment_mt731"]
+background_mode = 2
+sky = SubResource("Sky_nc36x")
+
+[sub_resource type="Animation" id="Animation_ydxv7"]
+resource_name = "Day_night_anim"
+length = 120.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WorldEnvironment:environment:sky:sky_material:sky_top_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 120),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.385, 0.454, 0.55, 1), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WorldEnvironment:environment:sky:sky_material:sky_energy_multiplier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 120),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:light_energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 120),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.1]
+}
+
+[sub_resource type="Animation" id="Animation_urla4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WorldEnvironment:environment:sky:sky_material:sky_top_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.385, 0.454, 0.55, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WorldEnvironment:environment:sky:sky_material:sky_energy_multiplier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:light_energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n6vl7"]
+_data = {
+"Day_night_anim": SubResource("Animation_ydxv7"),
+"RESET": SubResource("Animation_urla4")
+}
+
+[sub_resource type="Animation" id="Animation_iemut"]
+resource_name = "Fade_to_newgame"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../../../Camera3D:attributes:exposure_multiplier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_4opx1"]
+resource_name = "Gui_move"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../..:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-200, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qcvgg"]
+resource_name = "Load_Game_Move"
+length = 0.2
+
+[sub_resource type="Animation" id="Animation_whaqa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../..:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../../Option_menu:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../../Option_menu:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../../../HBox_startgame:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../../../HBox_startgame:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../../../../Camera3D:attributes:exposure_multiplier")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_gxefc"]
+resource_name = "Start_game_move"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../../HBox_startgame:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../../HBox_startgame:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-300, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5ggn5"]
+resource_name = "options_move"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../../Option_menu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-300, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../../Option_menu:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cn415"]
+_data = {
+"Fade_to_newgame": SubResource("Animation_iemut"),
+"Gui_move": SubResource("Animation_4opx1"),
+"Load_Game_Move": SubResource("Animation_qcvgg"),
+"RESET": SubResource("Animation_whaqa"),
+"Start_game_move": SubResource("Animation_gxefc"),
+"options_move": SubResource("Animation_5ggn5")
+}
+
+[sub_resource type="Animation" id="Animation_et44n"]
+resource_name = "Load_game_1"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Load_game:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Load_game:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(314, 27), Vector2(516, 27)]
+}
+
+[sub_resource type="Animation" id="Animation_v7wuf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Load_game:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Load_game:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(314, 27)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dv5ig"]
+_data = {
+"Load_game_1": SubResource("Animation_et44n"),
+"RESET": SubResource("Animation_v7wuf")
+}
+
+[node name="main_menu" type="Node3D"]
+script = ExtResource("1_q1bp6")
+
+[node name="Save_game" parent="." instance=ExtResource("7_a78t3")]
+
+[node name="Load_game" parent="." instance=ExtResource("5_svt7v")]
+
+[node name="New_game" parent="." instance=ExtResource("6_kcldr")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 17.4816, 2, -6.74406)
+attributes = SubResource("CameraAttributesPractical_jcrjp")
+fov = 56.3338
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.965926, -0.183013, -0.183013, 0, -0.707107, 0.707107, -0.258819, -0.683013, -0.683013, 22, 14, 7)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Sun"]
+environment = SubResource("Environment_mt731")
+
+[node name="Day-night" type="AnimationPlayer" parent="Sun"]
+libraries = {
+"": SubResource("AnimationLibrary_n6vl7")
+}
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer1" type="AnimationPlayer" parent="Control"]
+root_node = NodePath("../HBox_Main_menu/MarginContainer/VBoxContainer")
+libraries = {
+"": SubResource("AnimationLibrary_cn415")
+}
+
+[node name="HBox_Main_menu" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+offset_right = 1152.0
+offset_bottom = 648.0
+metadata/_edit_lock_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/HBox_Main_menu"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/HBox_Main_menu/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="PlayGameButton" type="Button" parent="Control/HBox_Main_menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_wotep")
+text = "Play Game
+"
+alignment = 0
+
+[node name="OptionsButton" type="Button" parent="Control/HBox_Main_menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_wotep")
+text = "Options"
+alignment = 0
+
+[node name="TestMapButton" type="Button" parent="Control/HBox_Main_menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_wotep")
+text = "Test Map
+"
+alignment = 0
+
+[node name="QuitGameButton" type="Button" parent="Control/HBox_Main_menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_wotep")
+text = "Quit Game"
+alignment = 0
+
+[node name="Option_menu" parent="Control" instance=ExtResource("4_k1ati")]
+visible = false
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 533.0
+offset_bottom = 648.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="HBox_startgame" type="HBoxContainer" parent="Control"]
+visible = false
+layout_mode = 1
+offset_right = 532.0
+offset_bottom = 802.0
+script = ExtResource("5_goguj")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/HBox_startgame"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/HBox_startgame/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Load_Game_1" type="TextureRect" parent="Control/HBox_startgame/MarginContainer/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("5_h3geq")
+script = ExtResource("6_2no2t")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_1/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 23
+
+[node name="Game 1" type="Label" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_1/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("2_wotep")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 48
+text = "Game 1"
+
+[node name="Game_stats" type="HBoxContainer" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_1/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 128
+
+[node name="COINS" type="Label" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_1/MarginContainer/VBoxContainer/Game_stats"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("2_wotep")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "COINS: 0"
+
+[node name="DEATHS" type="Label" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_1/MarginContainer/VBoxContainer/Game_stats"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme = ExtResource("2_wotep")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "DEATHS: 0"
+
+[node name="New_Game" type="Label" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_1/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("2_wotep")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 48
+text = "New Game"
+horizontal_alignment = 1
+
+[node name="Load_Game1_Button" type="Button" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_1/MarginContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("2_wotep")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_1"]
+libraries = {
+"": SubResource("AnimationLibrary_dv5ig")
+}
+
+[node name="Load_game" type="VBoxContainer" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_1"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 314.0
+offset_top = 27.0
+offset_right = 500.0
+offset_bottom = 123.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 16
+
+[node name="Load_Game_1" type="Button" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_1/Load_game"]
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 1
+theme = ExtResource("2_wotep")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "Load Game"
+
+[node name="Overwrite" type="Button" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_1/Load_game"]
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 1
+theme = ExtResource("2_wotep")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "Overwrite
+"
+
+[node name="Load_Game_1" type="Button" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme = ExtResource("2_wotep")
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_1"]
+initial_position = 1
+size = Vector2i(718, 114)
+unresizable = true
+borderless = true
+always_on_top = true
+theme = ExtResource("10_j86vm")
+ok_button_text = "Overwrite"
+dialog_text = "Are you sure you want to overwrite this save?"
+
+[node name="Start_new" type="ConfirmationDialog" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_1"]
+initial_position = 1
+size = Vector2i(442, 114)
+unresizable = true
+borderless = true
+always_on_top = true
+theme = ExtResource("10_j86vm")
+ok_button_text = "Start Game"
+dialog_text = "Ready to start a new game?"
+
+[node name="Load_Game_2" type="TextureRect" parent="Control/HBox_startgame/MarginContainer/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.784314)
+show_behind_parent = true
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("5_h3geq")
+script = ExtResource("10_387k6")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_2/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 23
+
+[node name="Game 2" type="Label" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("2_wotep")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 48
+text = "Game 2"
+
+[node name="Game_stats" type="HBoxContainer" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 128
+
+[node name="COINS" type="Label" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_2/MarginContainer/VBoxContainer/Game_stats"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("2_wotep")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "COINS: 0"
+
+[node name="DEATHS" type="Label" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_2/MarginContainer/VBoxContainer/Game_stats"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme = ExtResource("2_wotep")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "DEATHS: 0"
+
+[node name="New_Game" type="Label" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_2/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("2_wotep")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 48
+text = "New Game"
+horizontal_alignment = 1
+
+[node name="Load_Game2_Button" type="Button" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_2/MarginContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("2_wotep")
+
+[node name="Load_Game_2" type="Button" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme = ExtResource("2_wotep")
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_2"]
+libraries = {
+"": SubResource("AnimationLibrary_dv5ig")
+}
+
+[node name="Load_game" type="VBoxContainer" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_2"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 314.0
+offset_top = 27.0
+offset_right = 500.0
+offset_bottom = 123.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 16
+
+[node name="Load_Game_2" type="Button" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_2/Load_game"]
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 1
+theme = ExtResource("2_wotep")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "Load Game"
+
+[node name="Overwrite" type="Button" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_2/Load_game"]
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 1
+theme = ExtResource("2_wotep")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "Overwrite
+"
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_2"]
+initial_position = 1
+size = Vector2i(718, 114)
+unresizable = true
+borderless = true
+always_on_top = true
+theme = ExtResource("10_j86vm")
+ok_button_text = "Overwrite"
+dialog_text = "Are you sure you want to overwrite this save?"
+
+[node name="Start_new" type="ConfirmationDialog" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_2"]
+initial_position = 1
+size = Vector2i(442, 114)
+unresizable = true
+borderless = true
+always_on_top = true
+theme = ExtResource("10_j86vm")
+ok_button_text = "Start Game"
+dialog_text = "Ready to start a new game?"
+
+[node name="Load_Game_3" type="TextureRect" parent="Control/HBox_startgame/MarginContainer/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.784314)
+show_behind_parent = true
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("5_h3geq")
+script = ExtResource("11_lay2n")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_3/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 23
+
+[node name="Game 1" type="Label" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_3/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("2_wotep")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 48
+text = "Game 1"
+
+[node name="Game_stats" type="HBoxContainer" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_3/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 128
+
+[node name="COINS" type="Label" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_3/MarginContainer/VBoxContainer/Game_stats"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("2_wotep")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "COINS: 0"
+
+[node name="DEATHS" type="Label" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_3/MarginContainer/VBoxContainer/Game_stats"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme = ExtResource("2_wotep")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "DEATHS: 0"
+
+[node name="New_Game" type="Label" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_3/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("2_wotep")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 48
+text = "New Game"
+horizontal_alignment = 1
+
+[node name="Load_Game1_Button" type="Button" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_3/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("2_wotep")
+
+[node name="Load_Game_3" type="Button" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme = ExtResource("2_wotep")
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_3"]
+libraries = {
+"": SubResource("AnimationLibrary_dv5ig")
+}
+
+[node name="Load_game" type="VBoxContainer" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_3"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 314.0
+offset_top = 27.0
+offset_right = 500.0
+offset_bottom = 123.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 16
+
+[node name="Load_Game_3" type="Button" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_3/Load_game"]
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 1
+theme = ExtResource("2_wotep")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "Load Game"
+
+[node name="Overwrite" type="Button" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_3/Load_game"]
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 1
+theme = ExtResource("2_wotep")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "Overwrite
+"
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_3"]
+initial_position = 1
+size = Vector2i(718, 114)
+unresizable = true
+borderless = true
+always_on_top = true
+theme = ExtResource("10_j86vm")
+ok_button_text = "Overwrite"
+dialog_text = "Are you sure you want to overwrite this save?"
+
+[node name="Start_new" type="ConfirmationDialog" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_3"]
+initial_position = 1
+size = Vector2i(442, 114)
+unresizable = true
+borderless = true
+always_on_top = true
+theme = ExtResource("10_j86vm")
+ok_button_text = "Start Game"
+dialog_text = "Ready to start a new game?"
+
+[node name="New_Game_Test_Button" type="Button" parent="Control/HBox_startgame/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_wotep")
+text = "New Game Test"
+alignment = 0
+
+[node name="Back_Button" type="Button" parent="Control/HBox_startgame/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_wotep")
+text = "Back
+"
+alignment = 0
+
+[node name="Outside_level" parent="." instance=ExtResource("5_gsjx7")]
+
+[node name="FirePlace" parent="." instance=ExtResource("6_ys0h1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6, 0, -3.5)
+
+[connection signal="animation_finished" from="Sun/Day-night" to="." method="_on_daynight_animation_finished"]
+[connection signal="pressed" from="Control/HBox_Main_menu/MarginContainer/VBoxContainer/PlayGameButton" to="." method="_on_play_game_button_pressed"]
+[connection signal="pressed" from="Control/HBox_Main_menu/MarginContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="Control/HBox_Main_menu/MarginContainer/VBoxContainer/TestMapButton" to="." method="_on_test_map_button_pressed"]
+[connection signal="pressed" from="Control/HBox_Main_menu/MarginContainer/VBoxContainer/QuitGameButton" to="." method="_on_quit_game_button_pressed"]
+[connection signal="pressed" from="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_1/Load_game/Load_Game_1" to="." method="_on_load_game_1_pressed"]
+[connection signal="button_down" from="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_1/Load_game/Overwrite" to="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_1" method="_on_overwrite_button_down"]
+[connection signal="button_down" from="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_1/Load_Game_1" to="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_1" method="_on_load_game_1_button_down"]
+[connection signal="confirmed" from="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_1/ConfirmationDialog" to="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_1" method="_on_confirmation_dialog_confirmed"]
+[connection signal="canceled" from="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_1/Start_new" to="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_1" method="_on_start_new_canceled"]
+[connection signal="confirmed" from="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_1/Start_new" to="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_1" method="_on_start_new_confirmed"]
+[connection signal="pressed" from="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_2/MarginContainer/Load_Game2_Button" to="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_2" method="_on_load_game_2_button_pressed"]
+[connection signal="button_down" from="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_2/Load_Game_2" to="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_2" method="_on_load_game_2_button_down"]
+[connection signal="pressed" from="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_2/Load_game/Load_Game_2" to="." method="_on_load_game_2_pressed"]
+[connection signal="button_down" from="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_2/Load_game/Overwrite" to="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_2" method="_on_overwrite_button_down"]
+[connection signal="confirmed" from="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_2/ConfirmationDialog" to="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_2" method="_on_confirmation_dialog_confirmed"]
+[connection signal="canceled" from="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_2/Start_new" to="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_2" method="_on_start_new_canceled"]
+[connection signal="confirmed" from="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_2/Start_new" to="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_2" method="_on_start_new_confirmed"]
+[connection signal="button_down" from="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_3/Load_Game_3" to="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_3" method="_on_load_game_3_button_down"]
+[connection signal="pressed" from="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_3/Load_game/Load_Game_3" to="." method="_on_load_game_3_pressed"]
+[connection signal="button_down" from="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_3/Load_game/Overwrite" to="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_3" method="_on_overwrite_button_down"]
+[connection signal="confirmed" from="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_3/ConfirmationDialog" to="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_3" method="_on_confirmation_dialog_confirmed"]
+[connection signal="canceled" from="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_3/Start_new" to="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_3" method="_on_start_new_canceled"]
+[connection signal="confirmed" from="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_3/Start_new" to="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_3" method="_on_start_new_confirmed"]
+[connection signal="pressed" from="Control/HBox_startgame/MarginContainer/VBoxContainer/New_Game_Test_Button" to="Control/HBox_startgame" method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="Control/HBox_startgame/MarginContainer/VBoxContainer/Back_Button" to="." method="_on_back_button_pressed"]

@@ -1,0 +1,24 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://dqa7rgvfsa0gk"]
+
+[ext_resource type="FontFile" uid="uid://bwhmtrx4idt2x" path="res://recorces/fonts/Lexend-SemiBold.ttf" id="1_aswim"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_obhjk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_noyqh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rh40g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_25uyo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x54gk"]
+
+[resource]
+Button/colors/font_hover_color = Color(0.733333, 0.733333, 0.733333, 1)
+Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("1_aswim")
+Button/styles/disabled = SubResource("StyleBoxEmpty_obhjk")
+Button/styles/focus = SubResource("StyleBoxEmpty_noyqh")
+Button/styles/hover = SubResource("StyleBoxEmpty_rh40g")
+Button/styles/normal = SubResource("StyleBoxEmpty_25uyo")
+Button/styles/pressed = SubResource("StyleBoxEmpty_x54gk")
+Label/font_sizes/font_size = 32
