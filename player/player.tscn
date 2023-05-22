@@ -1063,6 +1063,9 @@ libraries = {
 "": SubResource("AnimationLibrary_8d467")
 }
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -20.0
+
 [connection signal="area_entered" from="Camera/player_area" to="." method="_on_area_3d_area_entered"]
 [connection signal="area_exited" from="Camera/player_area" to="." method="_on_area_3d_area_exited"]
 [connection signal="body_entered" from="Camera/Area3D" to="." method="_on_area_3d_body_entered"]

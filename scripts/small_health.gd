@@ -2,6 +2,8 @@ extends Node3D
 
 var player_near = false
 
+var can_sound = true
+
 func _physics_process(delta):
 	if GVar.Can_pickup == true and player_near == true:
 		_remove_item()

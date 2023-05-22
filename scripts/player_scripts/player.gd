@@ -38,6 +38,11 @@ var footsteps = [
 	load("res://sound_effects/footstep4.wav")
 ]
 
+var pain = [
+	load("res://sound_effects/pain1.wav"),
+	load("res://sound_effects/pain2.wav")
+]
+
 var step = true
 
 @export_category("Player")
@@ -89,6 +94,7 @@ func _input(event: InputEvent) -> void:
 		
 		if GVar.Holding_item == "small_health" and GVar.Max_health < 100:
 			can_atk = false
+			GVar.is_ingame = false #quick hack to stop player from changing item mid drink
 			$Weapon_animaion.play("drink_small_health")
 			$Camera/AudioStreamPlayer3D.set_stream(drink_sound.pick_random())
 			$Camera/AudioStreamPlayer3D.play()
@@ -96,6 +102,7 @@ func _input(event: InputEvent) -> void:
 			GVar.Max_health += 20
 			$HUD/InventrySystem.used_item()
 			can_atk = true
+			GVar.is_ingame = true
 
 		if GVar.Holding_item == "short_sword":
 			can_atk = false
@@ -213,6 +220,8 @@ func _on_area_3d_body_entered(body):
 
 func take_damage(damage):
 	if is_dead == false:
+		$AudioStreamPlayer.set_stream(pain.pick_random())
+		$AudioStreamPlayer.play()
 		if GVar.Max_shield == 0:
 			GVar.Max_health = GVar.Max_health - damage
 			if GVar.Max_health <= 0:

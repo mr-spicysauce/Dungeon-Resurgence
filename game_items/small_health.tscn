@@ -83,6 +83,7 @@ viewport_path = NodePath("3D text/SubViewport")
 script = ExtResource("1_isvdu")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
+max_contacts_reported = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.13, 0)
@@ -118,5 +119,6 @@ theme_override_fonts/font = ExtResource("3_aoeix")
 theme_override_font_sizes/font_size = 22
 text = "Small Health"
 
+[connection signal="body_entered" from="RigidBody3D" to="." method="_on_rigid_body_3d_body_entered"]
 [connection signal="area_entered" from="RigidBody3D/small_health" to="." method="_on_small_health_area_entered"]
 [connection signal="area_exited" from="RigidBody3D/small_health" to="." method="_on_small_health_area_exited"]
