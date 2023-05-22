@@ -64,4 +64,6 @@ func _on_go_out_shop_pressed():
 	$"SHOP TEXT/start_game_container/Start_game".show()
 
 func _on_start_game_pressed():
-	get_tree().change_scene_to_file("res://levels/lvl_1.tscn")
+	if GVar.can_buy_item == true:
+		get_tree().change_scene_to_file("res://levels/lvl_1.tscn")
+		GVar.difficulty = 1

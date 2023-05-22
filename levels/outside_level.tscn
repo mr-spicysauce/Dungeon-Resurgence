@@ -1610,7 +1610,6 @@ text = "Item Type: Item"
 horizontal_alignment = 1
 
 [node name="VBoxItemStats2" type="VBoxContainer" parent="SHOP TEXT/MarginContainer2/MarginContainer/HBoxContainer/background/MarginContainer/Control/HBoxItemStats"]
-custom_minimum_size = Vector2(140, 129)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 8
@@ -1625,6 +1624,7 @@ layout_mode = 2
 text = "Attack Speed: 0.3s"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SHOP TEXT/MarginContainer2/MarginContainer/HBoxContainer/background/MarginContainer/Control/HBoxItemStats/VBoxItemStats2"]
+visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="SHOP TEXT/MarginContainer2/MarginContainer/HBoxContainer/background/MarginContainer/Control/HBoxItemStats/VBoxItemStats2/VBoxContainer"]

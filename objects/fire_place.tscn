@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://dj80fb6thkpvd"]
+[gd_scene load_steps=58 format=3 uid="uid://dj80fb6thkpvd"]
 
 [ext_resource type="Script" path="res://scripts/fire_place.gd" id="1_eb7cy"]
 
@@ -908,6 +908,52 @@ _data = {
 "RESET": SubResource("Animation_wfmhu")
 }
 
+[sub_resource type="Gradient" id="Gradient_k5ugs"]
+offsets = PackedFloat32Array(0, 0.221429, 0.292857, 0.35, 0.735714)
+colors = PackedColorArray(0, 0, 0, 1, 0.709804, 0.356863, 0, 1, 1, 0.815686, 0, 1, 0.709804, 0.356863, 0, 1, 0.154876, 0.154876, 0.154876, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_dh2re"]
+gradient = SubResource("Gradient_k5ugs")
+
+[sub_resource type="Curve" id="Curve_afqnf"]
+max_value = 100.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_y3p0v"]
+curve = SubResource("Curve_afqnf")
+
+[sub_resource type="Curve" id="Curve_rlri1"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.714706, 0.645455), -1.00246, -1.00246, 0, 0, Vector2(1, 0.0818182), -2.70435, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_55p5p"]
+curve = SubResource("Curve_rlri1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4o53b"]
+emission_shape = 1
+emission_sphere_radius = 0.5
+direction = Vector3(0.15, 0, -1)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_max = 3.0
+linear_accel_max = 4.0
+damping_curve = SubResource("CurveTexture_y3p0v")
+angle_max = 360.0
+scale_min = 0.0
+scale_max = 0.34
+scale_curve = SubResource("CurveTexture_55p5p")
+color_ramp = SubResource("GradientTexture1D_dh2re")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0jymf"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_w8kg2"]
+material = SubResource("StandardMaterial3D_0jymf")
+
 [node name="FirePlace" type="Node3D"]
 script = ExtResource("1_eb7cy")
 
@@ -928,6 +974,7 @@ skeleton = NodePath("")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.0381064, 0, 0)
+visible = false
 amount = 128
 explosiveness = 0.02
 randomness = 1.0
@@ -943,5 +990,12 @@ light_energy = 2.0
 libraries = {
 "": SubResource("AnimationLibrary_6wcnh")
 }
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, -1.95405e-15, 8.54143e-23, 0, -4.37114e-08, -1, 1.95405e-15, 1, -4.37114e-08, -0.035313, 0.010426, 0)
+amount = 128
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_4o53b")
+draw_pass_1 = SubResource("BoxMesh_w8kg2")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

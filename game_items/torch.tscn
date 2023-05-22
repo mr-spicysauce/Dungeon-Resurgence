@@ -130,7 +130,7 @@ shadow_mesh = SubResource("ArrayMesh_mvuxj")
 offsets = PackedFloat32Array(0, 0.221429, 0.292857, 0.35, 0.735714)
 colors = PackedColorArray(0, 0, 0, 1, 0.709804, 0.356863, 0, 1, 1, 0.815686, 0, 1, 0.709804, 0.356863, 0, 1, 0.154876, 0.154876, 0.154876, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_dh2re"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_u0p0g"]
 gradient = SubResource("Gradient_xchhu")
 
 [sub_resource type="Curve" id="Curve_iw1cg"]
@@ -138,14 +138,14 @@ max_value = 100.0
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_y3p0v"]
+[sub_resource type="CurveTexture" id="CurveTexture_7iuyd"]
 curve = SubResource("Curve_iw1cg")
 
 [sub_resource type="Curve" id="Curve_x0vmh"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.714706, 0.645455), -1.00246, -1.00246, 0, 0, Vector2(1, 0.0818182), -2.70435, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="CurveTexture" id="CurveTexture_55p5p"]
+[sub_resource type="CurveTexture" id="CurveTexture_jkwum"]
 curve = SubResource("Curve_x0vmh")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_q5rfh"]
@@ -156,21 +156,21 @@ spread = 0.0
 gravity = Vector3(0, 0, 0)
 initial_velocity_max = 3.0
 linear_accel_max = 4.0
-damping_curve = SubResource("CurveTexture_y3p0v")
+damping_curve = SubResource("CurveTexture_7iuyd")
 angle_max = 360.0
 scale_min = 0.0
 scale_max = 0.34
-scale_curve = SubResource("CurveTexture_55p5p")
-color_ramp = SubResource("GradientTexture1D_dh2re")
+scale_curve = SubResource("CurveTexture_jkwum")
+color_ramp = SubResource("GradientTexture1D_u0p0g")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0jymf"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1pmyq"]
 transparency = 1
 blend_mode = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_hua6r"]
-material = SubResource("StandardMaterial3D_0jymf")
+material = SubResource("StandardMaterial3D_1pmyq")
 
 [node name="Torch" type="Node3D"]
 

@@ -32,6 +32,7 @@ func change_item_info(info):
 	$"../MarginContainer2/MarginContainer/HBoxContainer/background/MarginContainer/Control/VBoxContainer/Extra_info".text = str(info)
 
 func _on_short_sword_pressed():
+	$"../MarginContainer2/MarginContainer/HBoxContainer/background/MarginContainer/Control/HBoxItemStats/VBoxItemStats2/VBoxContainer".hide()
 	item_to_buy = "short_sword"
 	change_cost(GVar.Item_list.get("short_sword").get("cost"))
 	change_damge( "Damage: " + str(GVar.Item_list.get("short_sword").get("damage")))
@@ -42,6 +43,7 @@ func _on_short_sword_pressed():
 	change_image(load("res://recorces/HotBar_Item_textures/short_sword.png"))
 
 func _on_long_sword_pressed():
+	$"../MarginContainer2/MarginContainer/HBoxContainer/background/MarginContainer/Control/HBoxItemStats/VBoxItemStats2/VBoxContainer".hide()
 	item_to_buy = "long_sword"
 	change_cost(GVar.Item_list.get("long_sword").get("cost"))
 	change_damge( "Damage: " + str(GVar.Item_list.get("long_sword").get("damage")))
@@ -52,6 +54,7 @@ func _on_long_sword_pressed():
 	change_image(load("res://recorces/HotBar_Item_textures/long_sword.png"))
 
 func _on_big_health_potoin_pressed():
+	$"../MarginContainer2/MarginContainer/HBoxContainer/background/MarginContainer/Control/HBoxItemStats/VBoxItemStats2/VBoxContainer".hide()
 	item_to_buy = "big_health"
 	change_cost(GVar.Item_list.get("big_health").get("cost"))
 	change_damge( "Health Gain: " + str(GVar.Item_list.get("big_health").get("healing")))
@@ -62,6 +65,7 @@ func _on_big_health_potoin_pressed():
 	change_image(load("res://recorces/HotBar_Item_textures/big_health.png"))
 
 func _on_small_health_potoin_pressed():
+	$"../MarginContainer2/MarginContainer/HBoxContainer/background/MarginContainer/Control/HBoxItemStats/VBoxItemStats2/VBoxContainer".hide()
 	item_to_buy = "small_health"
 	change_cost(GVar.Item_list.get("small_health").get("cost"))
 	change_damge("Health Gain: " + str(GVar.Item_list.get("small_health").get("healing")))
@@ -72,6 +76,7 @@ func _on_small_health_potoin_pressed():
 	change_image(load("res://recorces/HotBar_Item_textures/small_health.png"))
 
 func _on_more_shield_pressed():
+	$"../MarginContainer2/MarginContainer/HBoxContainer/background/MarginContainer/Control/HBoxItemStats/VBoxItemStats2/VBoxContainer".show()
 	$"../MarginContainer2/MarginContainer/HBoxContainer/background/MarginContainer/Control/HBoxItemStats/VBoxItemStats2/DamageLable".hide()
 	$"../MarginContainer2/MarginContainer/HBoxContainer/background/MarginContainer/Control/HBoxItemStats/VBoxItemStats2/AttackSpeedLable".hide()
 	item_to_buy = "shield"
@@ -79,7 +84,7 @@ func _on_more_shield_pressed():
 	change_item_name("Shield")
 	change_item_type("shield")
 	change_item_info("You can buy more Shield for 1 coin per Shield point")
-	change_image(load("res://recorces/GUI/shield icon.png"))
+	change_image(load("res://recorces/HotBar_Item_textures/sheild.png"))
 
 func _on_buy_item_pressed():
 	$"../MarginContainer2/ConfirmationDialog".popup_centered()

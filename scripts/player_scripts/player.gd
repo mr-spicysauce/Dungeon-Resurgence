@@ -108,6 +108,18 @@ func _input(event: InputEvent) -> void:
 			can_atk = true
 			GVar.is_ingame = true
 
+		if GVar.Holding_item == "big_health" and GVar.Max_health < 100:
+			can_atk = false
+			GVar.is_ingame = false #quick hack to stop player from changing item mid drink
+			$Weapon_animaion.play("drink_big_health")
+			$Camera/AudioStreamPlayer3D.set_stream(drink_sound.pick_random())
+			$Camera/AudioStreamPlayer3D.play()
+			await get_tree().create_timer(0.75).timeout
+			GVar.Max_health += 50
+			$HUD/InventrySystem.used_item()
+			can_atk = true
+			GVar.is_ingame = true
+
 		if GVar.Holding_item == "short_sword":
 			can_atk = false
 			$Weapon_animaion.play(short_sword_anim.pick_random())
