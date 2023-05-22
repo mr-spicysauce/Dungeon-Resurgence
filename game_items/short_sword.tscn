@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://clawwu8t70co3"]
+[gd_scene load_steps=22 format=3 uid="uid://clawwu8t70co3"]
 
 [ext_resource type="Script" path="res://scripts/3D_item_text.gd" id="1_5pbj6"]
 [ext_resource type="Script" path="res://scripts/short_sword.gd" id="1_7ufty"]
@@ -55,7 +55,52 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_i35qd")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_y5hie"]
+[sub_resource type="Gradient" id="Gradient_u5uyk"]
+offsets = PackedFloat32Array(0, 0.221429, 0.292857, 0.35, 0.735714)
+colors = PackedColorArray(0, 0, 0, 1, 0.709804, 0.356863, 0, 1, 1, 0.815686, 0, 1, 0.709804, 0.356863, 0, 1, 0.154876, 0.154876, 0.154876, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1wcp4"]
+gradient = SubResource("Gradient_u5uyk")
+
+[sub_resource type="Curve" id="Curve_7b0yq"]
+max_value = 100.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_gwm6x"]
+curve = SubResource("Curve_7b0yq")
+
+[sub_resource type="Curve" id="Curve_cm246"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.714706, 0.645455), -1.00246, -1.00246, 0, 0, Vector2(1, 0.0818182), -2.70435, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_wvuwg"]
+curve = SubResource("Curve_cm246")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3x2d2"]
+emission_shape = 3
+emission_box_extents = Vector3(0.1, 0.1, 0.3)
+direction = Vector3(0, 0, 0)
+spread = 0.0
+gravity = Vector3(0, 1, 0)
+linear_accel_max = 4.0
+damping_curve = SubResource("CurveTexture_gwm6x")
+angle_max = 360.0
+scale_min = 0.0
+scale_max = 0.1
+scale_curve = SubResource("CurveTexture_wvuwg")
+color_ramp = SubResource("GradientTexture1D_1wcp4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2wdsp"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_w1m1l"]
+material = SubResource("StandardMaterial3D_2wdsp")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_lmo4p"]
 viewport_path = NodePath("3D text/SubViewport")
 
 [node name="short_sword" type="Node3D"]
@@ -88,10 +133,18 @@ transform = Transform3D(0.125, 0, 0, 0, 0.219, 0, 0, 0, 0.217, 0, 0, 0)
 mesh = SubResource("ArrayMesh_7u04d")
 skeleton = NodePath("")
 
+[node name="GPUParticles3D" type="GPUParticles3D" parent="RigidBody3D"]
+transform = Transform3D(1, -3.55271e-15, -6.35275e-22, 0, -4.37114e-08, -1, 3.55271e-15, 1, -4.37114e-08, -0.035313, 0.610426, -4.37114e-09)
+visible = false
+amount = 128
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_3x2d2")
+draw_pass_1 = SubResource("BoxMesh_w1m1l")
+
 [node name="3D text" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
 billboard = 2
-texture = SubResource("ViewportTexture_y5hie")
+texture = SubResource("ViewportTexture_lmo4p")
 script = ExtResource("1_5pbj6")
 
 [node name="SubViewport" type="SubViewport" parent="3D text"]

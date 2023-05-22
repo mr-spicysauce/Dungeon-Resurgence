@@ -10,10 +10,10 @@ var Max_health = 100
 var Max_shield = 0
 var Coins = 40
 var Item1 = "long_sword"
-var Item2 = "small_health"
+var Item2 = "short_sword"
 var Item3 = "big_health"
-var Item4 = null
-var Item5 = null
+var Item4 = "big_health"
+var Item5 = "brick"
 var Monsters_killed = 0
 var Deaths = 0
 
@@ -73,5 +73,13 @@ var Item_list = {
 		"atk_speed":0.75,
 		"cost":20
 	},
+
+	"brick":
+	{
+		"type": "melee",
+		"damage":1,
+		"atk_speed":0.5,
+		"cost":0
+	}
 
 }

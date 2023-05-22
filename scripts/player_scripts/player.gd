@@ -43,6 +43,10 @@ var pain = [
 	load("res://sound_effects/pain2.wav")
 ]
 
+var brick_anim = [
+	"brick_swing_1"
+]
+
 var step = true
 
 @export_category("Player")
@@ -138,6 +142,15 @@ func _input(event: InputEvent) -> void:
 			await get_tree().create_timer(0.6).timeout
 			can_atk = true
 
+		if GVar.Holding_item == "brick":
+			can_atk = false
+			$Weapon_animaion.play(brick_anim.pick_random())
+			$Camera/AudioStreamPlayer3D.set_stream(short_sword_sound.pick_random())
+			$Camera/AudioStreamPlayer3D.play()
+			do_damage()
+			await get_tree().create_timer(0.5).timeout
+			can_atk = true
+
 func _physics_process(delta: float) -> void:
 	
 	GVar.player_pos = global_transform.origin
@@ -160,6 +173,7 @@ func _physics_process(delta: float) -> void:
 		$"Camera/Weapon_holder/Short Sword".hide()
 		$Camera/Weapon_holder/Small_Red.hide()
 		$Camera/Weapon_holder/Medium_Red.hide()
+		$Camera/Weapon_holder/brick.hide()
 
 func capture_mouse() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -220,6 +234,10 @@ func show_item(item_name):
 		$Camera/Weapon_holder/Medium_Red.show()
 	else:
 		$Camera/Weapon_holder/Medium_Red.hide()
+	if item_name == "brick":
+		$Camera/Weapon_holder/brick.show()
+	else:
+		$Camera/Weapon_holder/brick.hide()
 
 func do_damage():
 	$Camera/Area3D.monitoring = true
