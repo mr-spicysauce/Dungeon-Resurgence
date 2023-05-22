@@ -14,6 +14,32 @@ var long_sword_anim = [
 	"long_sword_swing_2"
 ]
 
+var short_sword_sound = [
+	load("res://sound_effects/short_sword1.wav"),
+	load("res://sound_effects/short_sword2.wav"),
+	load("res://sound_effects/short_sword3.wav")
+]
+
+var long_sword_sound = [
+	load("res://sound_effects/long_sword1.wav"),
+	load("res://sound_effects/long_sword2.wav"),
+	load("res://sound_effects/long_sword3.wav")
+]
+
+var drink_sound = [
+	load("res://sound_effects/drink1.mp3"),
+	load("res://sound_effects/drink2.wav")
+]
+
+var footsteps = [
+	load("res://sound_effects/footstep1.wav"),
+	load("res://sound_effects/footstep2.wav"),
+	load("res://sound_effects/footstep3.wav"),
+	load("res://sound_effects/footstep4.wav")
+]
+
+var step = true
+
 @export_category("Player")
 @export_range(1, 35, 1) var speed: float = 10 # m/s
 @export_range(10, 400, 1) var acceleration: float = 100 # m/s^2
@@ -44,11 +70,28 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("exit"): get_tree().quit()
 	if Input.is_action_just_pressed("sprint"): speed = 8
 	
+	if Input.get_vector("move_left", "move_right", "move_forward", "move_backwards") and step == true and is_on_floor():
+		step = false
+		var Sound_play = AudioStreamPlayer.new()
+		self.add_child(Sound_play)
+			
+		Sound_play.set_stream(footsteps.pick_random())
+		Sound_play.volume_db = -20
+		
+		Sound_play.play()
+		Sound_play.finished.connect(func ():
+			step = true
+			Sound_play.queue_free()
+			)
+
+
 	if Input.is_action_just_pressed("attack") and GVar.Holding_item != null and can_atk == true:
 		
 		if GVar.Holding_item == "small_health" and GVar.Max_health < 100:
 			can_atk = false
 			$Weapon_animaion.play("drink_small_health")
+			$Camera/AudioStreamPlayer3D.set_stream(drink_sound.pick_random())
+			$Camera/AudioStreamPlayer3D.play()
 			await get_tree().create_timer(0.75).timeout
 			GVar.Max_health += 20
 			$HUD/InventrySystem.used_item()
@@ -57,6 +100,8 @@ func _input(event: InputEvent) -> void:
 		if GVar.Holding_item == "short_sword":
 			can_atk = false
 			$Weapon_animaion.play(short_sword_anim.pick_random())
+			$Camera/AudioStreamPlayer3D.set_stream(short_sword_sound.pick_random())
+			$Camera/AudioStreamPlayer3D.play()
 			do_damage()
 			await get_tree().create_timer(0.3).timeout
 			can_atk = true
@@ -64,11 +109,14 @@ func _input(event: InputEvent) -> void:
 		if GVar.Holding_item == "long_sword":
 			can_atk = false
 			$Weapon_animaion.play(long_sword_anim.pick_random())
+			$Camera/AudioStreamPlayer3D.set_stream(long_sword_sound.pick_random())
+			$Camera/AudioStreamPlayer3D.play()
 			do_damage()
 			await get_tree().create_timer(0.6).timeout
 			can_atk = true
 
 func _physics_process(delta: float) -> void:
+	
 	GVar.player_pos = global_transform.origin
 	GVar.player_rotation = self.rotation_degrees
 	GVar.item_drop_pos = $Camera/spawn_item.global_position
@@ -109,6 +157,7 @@ func _walk(delta: float) -> Vector3:
 	var _forward: Vector3 = camera.transform.basis * Vector3(move_dir.x, 0, move_dir.y)
 	var walk_dir: Vector3 = Vector3(_forward.x, 0, _forward.z).normalized()
 	walk_vel = walk_vel.move_toward(walk_dir * speed * move_dir.length(), acceleration * delta)
+	
 	return walk_vel
 
 func _gravity(delta: float) -> Vector3:

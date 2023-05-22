@@ -3,9 +3,11 @@ extends Node3D
 signal add_coins
 
 func _ready():
+	
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	$HUD.hide()
 	$"SHOP TEXT/MarginContainer/Button".hide()
+	$"SHOP TEXT/start_game_container/Start_game".hide()
 	$Shop_text_bounce.play("Text_bounce")
 	$Move_head.play("Move_head")
 	await get_tree().create_timer(5).timeout
@@ -13,6 +15,7 @@ func _ready():
 	$HUD.show()
 	await get_tree().create_timer(8.5).timeout
 	$"SHOP TEXT/MarginContainer/Button".show()
+	$"SHOP TEXT/start_game_container/Start_game".show()
 	emit_signal("add_coins")
 
 func _on_move_head_animation_finished(anim_name):
@@ -37,6 +40,7 @@ func _on_start_game_mouse_exited():
 
 func _on_button_pressed():
 	$Gotoshop.play("GotoShop")
+	$"SHOP TEXT/start_game_container/Start_game".hide()
 	$"SHOP TEXT".modulate = Color(255, 255, 255)
 	$"SHOP TEXT/MarginContainer/Button".hide()
 	await get_tree().create_timer(1).timeout
@@ -53,10 +57,10 @@ func _on_go_out_shop_pressed():
 	await get_tree().create_timer(0.5).timeout
 	$"SHOP TEXT/MarginContainer2".hide()
 	$Outside_level/shop_guy/AnimationPlayer.play("wave")
-	await get_tree().create_timer(2.4).timeout
 	$Gotoshop.play_backwards("GotoShop")
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(2.4).timeout
 	$"SHOP TEXT/MarginContainer/Button".show()
+	$"SHOP TEXT/start_game_container/Start_game".show()
 
 func _on_start_game_pressed():
 	get_tree().change_scene_to_file("res://levels/lvl_1.tscn")

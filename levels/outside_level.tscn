@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cidqp54opm48g"]
+[gd_scene load_steps=35 format=3 uid="uid://cidqp54opm48g"]
 
 [ext_resource type="Script" path="res://scripts/outside_level.gd" id="1_bj8cu"]
 [ext_resource type="PackedScene" uid="uid://c07yfqxab6ydh" path="res://scripts/Globals/globals.tscn" id="2_nnfs4"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://scripts/shop.gd" id="7_u2y70"]
 [ext_resource type="FontFile" uid="uid://bwhmtrx4idt2x" path="res://recorces/fonts/Lexend-SemiBold.ttf" id="8_xgry7"]
 [ext_resource type="Texture2D" uid="uid://nf0yxtmstn41" path="res://icon.svg" id="10_g1xpk"]
-[ext_resource type="Script" path="res://scripts/Shop_text.gd" id="16_y8ucj"]
 [ext_resource type="Theme" uid="uid://dg7yqs5xm6yb3" path="res://recorces/themes/Menu_theme.tres" id="17_3c0wl"]
 
 [sub_resource type="Animation" id="Animation_lfipy"]
@@ -321,34 +320,10 @@ tracks/41/keys = {
 tracks/42/type = "value"
 tracks/42/imported = false
 tracks/42/enabled = true
-tracks/42/path = NodePath("SHOP TEXT/SubViewport/Label:self_modulate")
+tracks/42/path = NodePath("HUD:modulate")
 tracks/42/interp = 1
 tracks/42/loop_wrap = true
 tracks/42/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/43/type = "value"
-tracks/43/imported = false
-tracks/43/enabled = true
-tracks/43/path = NodePath("HUD:modulate")
-tracks/43/interp = 1
-tracks/43/loop_wrap = true
-tracks/43/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/44/type = "value"
-tracks/44/imported = false
-tracks/44/enabled = true
-tracks/44/path = NodePath("Cave_text/SubViewport/Label:self_modulate")
-tracks/44/interp = 1
-tracks/44/loop_wrap = true
-tracks/44/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -677,35 +652,11 @@ tracks/42/keys = {
 tracks/43/type = "value"
 tracks/43/imported = false
 tracks/43/enabled = true
-tracks/43/path = NodePath("SHOP TEXT/SubViewport/Label:self_modulate")
+tracks/43/path = NodePath("HUD:modulate")
 tracks/43/interp = 1
 tracks/43/loop_wrap = true
 tracks/43/keys = {
-"times": PackedFloat32Array(8, 8.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/44/type = "value"
-tracks/44/imported = false
-tracks/44/enabled = true
-tracks/44/path = NodePath("HUD:modulate")
-tracks/44/interp = 1
-tracks/44/loop_wrap = true
-tracks/44/keys = {
 "times": PackedFloat32Array(6.5, 8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/45/type = "value"
-tracks/45/imported = false
-tracks/45/enabled = true
-tracks/45/path = NodePath("Cave_text/SubViewport/Label:self_modulate")
-tracks/45/interp = 1
-tracks/45/loop_wrap = true
-tracks/45/keys = {
-"times": PackedFloat32Array(8, 8.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -970,7 +921,7 @@ bind/40/name = &"toe.R"
 bind/40/bone = -1
 bind/40/pose = Transform3D(-0.48142, -6.12582e-05, 0.0101545, 0.0101549, -0.00218927, 0.481415, -1.50637e-05, 0.481522, 0.00219008, -0.163426, -0.149218, 1.04832)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_imhe4"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ge8f6"]
 viewport_path = NodePath("SHOP TEXT/SubViewport")
 
 [sub_resource type="Animation" id="Animation_qrntg"]
@@ -1418,7 +1369,7 @@ shadow_enabled = true
 [node name="SHOP TEXT" type="Sprite3D" parent="."]
 transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 12, 4.5, 8.4)
 billboard = 2
-texture = SubResource("ViewportTexture_imhe4")
+texture = SubResource("ViewportTexture_ge8f6")
 
 [node name="Shop_animation" type="AnimationPlayer" parent="SHOP TEXT"]
 libraries = {
@@ -1427,19 +1378,6 @@ libraries = {
 
 [node name="Shop_sorter" type="Node" parent="SHOP TEXT"]
 script = ExtResource("7_u2y70")
-
-[node name="SubViewport" type="SubViewport" parent="SHOP TEXT"]
-transparent_bg = true
-size = Vector2i(367, 163)
-script = ExtResource("16_y8ucj")
-
-[node name="Label" type="Label" parent="SHOP TEXT/SubViewport"]
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("8_xgry7")
-theme_override_font_sizes/font_size = 128
-text = "SHOP"
 
 [node name="MarginContainer" type="MarginContainer" parent="SHOP TEXT"]
 anchors_preset = 15
@@ -1457,6 +1395,20 @@ theme_override_constants/margin_bottom = 200
 layout_mode = 2
 theme = ExtResource("17_3c0wl")
 
+[node name="Label" type="Label" parent="SHOP TEXT/MarginContainer/Button"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -183.5
+offset_right = 183.5
+offset_bottom = 163.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("8_xgry7")
+theme_override_font_sizes/font_size = 128
+text = "SHOP"
+
 [node name="start_game_container" type="MarginContainer" parent="SHOP TEXT"]
 anchors_preset = 15
 anchor_right = 1.0
@@ -1472,6 +1424,21 @@ theme_override_constants/margin_bottom = 200
 [node name="Start_game" type="Button" parent="SHOP TEXT/start_game_container"]
 layout_mode = 2
 theme = ExtResource("17_3c0wl")
+
+[node name="Label" type="Label" parent="SHOP TEXT/start_game_container/Start_game"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -407.5
+offset_right = 407.5
+offset_bottom = 163.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("8_xgry7")
+theme_override_font_sizes/font_size = 128
+text = "ENTER CAVE"
+horizontal_alignment = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="SHOP TEXT"]
 visible = false
@@ -1500,6 +1467,7 @@ theme_override_constants/margin_bottom = 32
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SHOP TEXT/MarginContainer2/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 150
 
 [node name="HBoxItems" type="HBoxContainer" parent="SHOP TEXT/MarginContainer2/MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -1658,6 +1626,7 @@ alignment = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SHOP TEXT/MarginContainer2/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 8
 mouse_filter = 2
 
 [node name="Go_out_shop" type="Button" parent="SHOP TEXT/MarginContainer2/MarginContainer/VBoxContainer/HBoxContainer"]
@@ -1703,20 +1672,6 @@ libraries = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.87, 4.5, 0.112)
 billboard = 2
 texture = SubResource("ViewportTexture_pr61a")
-
-[node name="SubViewport" type="SubViewport" parent="Cave_text"]
-transparent_bg = true
-size = Vector2i(815, 163)
-script = ExtResource("16_y8ucj")
-
-[node name="Label" type="Label" parent="Cave_text/SubViewport"]
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("8_xgry7")
-theme_override_font_sizes/font_size = 128
-text = "ENTER CAVE"
-horizontal_alignment = 1
 
 [connection signal="animation_finished" from="Move_head" to="." method="_on_move_head_animation_finished"]
 [connection signal="mouse_entered" from="SHOP TEXT/MarginContainer/Button" to="." method="_on_button_mouse_entered"]

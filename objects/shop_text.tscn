@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3djinj5i5q82"]
+
+[ext_resource type="Script" path="res://scripts/Shop_text.gd" id="2_v6qh2"]
+[ext_resource type="FontFile" uid="uid://bwhmtrx4idt2x" path="res://recorces/fonts/Lexend-SemiBold.ttf" id="3_eynfp"]
+
+[node name="SubViewport" type="SubViewport"]
+transparent_bg = true
+size = Vector2i(367, 163)
+render_target_update_mode = 3
+script = ExtResource("2_v6qh2")
+
+[node name="Label" type="Label" parent="."]
+self_modulate = Color(255, 255, 255, 0)
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_eynfp")
+theme_override_font_sizes/font_size = 128
+text = "SHOP"

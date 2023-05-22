@@ -10,9 +10,9 @@ var Max_shield = 0
 var Coins = 100
 var Item1 = "short_sword"
 var Item2 = "small_health"
-var Item3 = null
-var Item4 = null
-var Item5 = null
+var Item3 = "small_health"
+var Item4 = "small_health"
+var Item5 = "small_health"
 var Monsters_killed = 0
 var Deaths = 0
 

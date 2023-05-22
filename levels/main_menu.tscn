@@ -800,14 +800,14 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 23
 
-[node name="Game 1" type="Label" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_3/MarginContainer/VBoxContainer"]
+[node name="Game 3" type="Label" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_3/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 theme = ExtResource("2_wotep")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 48
-text = "Game 1"
+text = "Game 3"
 
 [node name="Game_stats" type="HBoxContainer" parent="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_3/MarginContainer/VBoxContainer"]
 layout_mode = 2

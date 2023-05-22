@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyl5bro0yar35"]
+
+[ext_resource type="Script" path="res://scripts/Shop_text.gd" id="1_v3h5r"]
+[ext_resource type="FontFile" uid="uid://bwhmtrx4idt2x" path="res://recorces/fonts/Lexend-SemiBold.ttf" id="2_heww7"]
+
+[node name="SubViewport" type="SubViewport"]
+transparent_bg = true
+size = Vector2i(815, 163)
+render_target_update_mode = 3
+script = ExtResource("1_v3h5r")
+
+[node name="Label" type="Label" parent="."]
+self_modulate = Color(255, 255, 255, 0)
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_heww7")
+theme_override_font_sizes/font_size = 128
+text = "ENTER CAVE"
+horizontal_alignment = 1

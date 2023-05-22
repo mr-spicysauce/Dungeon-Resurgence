@@ -682,7 +682,9 @@ _data = {
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 disable_mode = 2
+wall_min_slide_angle = 0.436332
 floor_stop_on_slope = false
+floor_block_on_wall = false
 script = ExtResource("1_sq38b")
 camera_sens = 10.0
 
@@ -747,6 +749,10 @@ monitoring = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Camera/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
 shape = SubResource("BoxShape3D_07of4")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0999999, -0.9)
+volume_db = -20.0
 
 [node name="HUD" parent="." instance=ExtResource("3_c1nu7")]
 

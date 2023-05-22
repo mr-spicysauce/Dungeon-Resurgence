@@ -1,10 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://bu44kqi0wyig5"]
+[gd_scene load_steps=18 format=3 uid="uid://bu44kqi0wyig5"]
 
 [ext_resource type="Script" path="res://scripts/goblin_short_sword.gd" id="1_b1ow1"]
 [ext_resource type="Texture2D" uid="uid://l6ab5385eewj" path="res://3d_models/short_and_long_sword_sonic-robo-blast-2-v22-32x.png" id="1_cfheg"]
-[ext_resource type="Theme" uid="uid://dg7yqs5xm6yb3" path="res://recorces/themes/Menu_theme.tres" id="3_gooc7"]
-[ext_resource type="Texture2D" uid="uid://cif77ivtuq32l" path="res://recorces/GUI/stats bar.png" id="3_rs10r"]
-[ext_resource type="Script" path="res://scripts/Goblin_short_sword_3d_text.gd" id="3_wql3i"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e0s5b"]
 resource_name = "Material"
@@ -1143,9 +1140,6 @@ _data = {
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_81x4k"]
 radius = 0.4
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ws0aq"]
-viewport_path = NodePath("Sprite3D/SubViewport")
-
 [node name="Goblin_short_sword" type="CharacterBody3D" groups=["bad_guy"]]
 script = ExtResource("1_b1ow1")
 
@@ -1476,48 +1470,6 @@ shape = SubResource("CapsuleShape3D_81x4k")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1.6
-
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 2.3, 0)
-billboard = 2
-texture = SubResource("ViewportTexture_ws0aq")
-
-[node name="SubViewport" type="SubViewport" parent="Sprite3D"]
-transparent_bg = true
-size = Vector2i(400, 87)
-script = ExtResource("3_wql3i")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Sprite3D/SubViewport"]
-offset_right = 400.0
-offset_bottom = 87.0
-
-[node name="Label" type="Label" parent="Sprite3D/SubViewport/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("3_gooc7")
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 32
-text = "Short Sword Goblin"
-horizontal_alignment = 1
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="Sprite3D/SubViewport/VBoxContainer"]
-self_modulate = Color(0.0156863, 1, 0, 1)
-layout_mode = 2
-max_value = 30.0
-value = 30.0
-texture_progress = ExtResource("3_rs10r")
-
-[node name="Label" type="Label" parent="Sprite3D/SubViewport/VBoxContainer/TextureProgressBar"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("3_gooc7")
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 32
-text = "30/30"
-horizontal_alignment = 1
 
 [connection signal="body_entered" from="Skeleton3D/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

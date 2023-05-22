@@ -6,6 +6,8 @@ extends CharacterBody3D
 
 @onready var ragdoll = preload("res://bad_guys/goblin_short_sword_ragdoll.tscn")
 
+@export var health_texture = preload("res://bad_guys/bad_guy_text.tscn")
+
 var atk_anim = [
 	"atk_1"
 ]
@@ -24,6 +26,9 @@ var can_atk = false
 
 func _ready():
 	
+	health_texture = health_texture.instantiate()
+	add_child(health_texture)
+	
 	max_health = randf_range(25,50)
 	max_health = round(max_health)
 	coin_for_kill = randf_range(0,3)
@@ -36,9 +41,10 @@ func _ready():
 
 func _physics_process(delta):
 	
-	$Sprite3D/SubViewport/VBoxContainer/TextureProgressBar/Label.text = str(str(health) + "/" + str(max_health))
-	$Sprite3D/SubViewport/VBoxContainer/TextureProgressBar.value = health
-	$Sprite3D/SubViewport/VBoxContainer/TextureProgressBar.max_value = max_health
+	$bad_guy_text/SubViewport/VBoxContainer/TextureProgressBar/Label.text = str(str(health) + "/" + str(max_health))
+	$bad_guy_text/SubViewport/VBoxContainer/TextureProgressBar.value = health
+	$bad_guy_text/SubViewport/VBoxContainer/TextureProgressBar.max_value = max_health
+	$bad_guy_text/SubViewport/VBoxContainer/Label.text = "Goblin Short Sword"
 	
 	look_at(Vector3(GVar.player_pos.x, GVar.player_pos.y, GVar.player_pos.z))
 	rotate_object_local(Vector3.UP, PI)
@@ -74,6 +80,7 @@ func take_damage():
 		get_parent().add_child(ragdoll)
 		print(global_position)
 		ragdoll.global_position = global_position
+		ragdoll.global_rotation = global_rotation
 		GVar.add_coins = coin_for_kill
 		GVar.Monsters_killed += 1
 		self.queue_free()

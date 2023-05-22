@@ -1226,3 +1226,6 @@ one_shot = true
 explosiveness = 0.72
 process_material = SubResource("ParticleProcessMaterial_3kirs")
 draw_pass_1 = SubResource("CylinderMesh_340p5")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+volume_db = -20.0
