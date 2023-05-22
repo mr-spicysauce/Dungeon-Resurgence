@@ -1,8 +1,9 @@
-[gd_scene load_steps=32 format=3 uid="uid://dyg4oqe12cdbr"]
+[gd_scene load_steps=30 format=3 uid="uid://dyg4oqe12cdbr"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_q1bp6"]
 [ext_resource type="Theme" uid="uid://dg7yqs5xm6yb3" path="res://recorces/themes/Menu_theme.tres" id="2_wotep"]
 [ext_resource type="PackedScene" uid="uid://dc5yft1fyvocb" path="res://objects/option_menu.tscn" id="4_k1ati"]
+[ext_resource type="Environment" uid="uid://cnsjkt7uui5po" path="res://enviroments/outside_world_enviroment.tres" id="5_854yj"]
 [ext_resource type="Script" path="res://scripts/Load_or_NewGame menu.gd" id="5_goguj"]
 [ext_resource type="PackedScene" uid="uid://bxth4m1sjarim" path="res://objects/outside_terrain.tscn" id="5_gsjx7"]
 [ext_resource type="Texture2D" uid="uid://tg1vndbwyhke" path="res://recorces/GUI/NEW_GAME_BACKGROUND.png" id="5_h3geq"]
@@ -16,15 +17,6 @@
 [ext_resource type="Script" path="res://scripts/Load_Game_3.gd" id="11_lay2n"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_jcrjp"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_clanw"]
-
-[sub_resource type="Sky" id="Sky_nc36x"]
-sky_material = SubResource("ProceduralSkyMaterial_clanw")
-
-[sub_resource type="Environment" id="Environment_mt731"]
-background_mode = 2
-sky = SubResource("Sky_nc36x")
 
 [sub_resource type="Animation" id="Animation_ydxv7"]
 resource_name = "Day_night_anim"
@@ -391,7 +383,7 @@ transform = Transform3D(0.965926, -0.183013, -0.183013, 0, -0.707107, 0.707107, 
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Sun"]
-environment = SubResource("Environment_mt731")
+environment = ExtResource("5_854yj")
 
 [node name="Day-night" type="AnimationPlayer" parent="Sun"]
 libraries = {
@@ -442,6 +434,7 @@ text = "Options"
 alignment = 0
 
 [node name="TestMapButton" type="Button" parent="Control/HBox_Main_menu/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 theme = ExtResource("2_wotep")
 text = "Test Map
@@ -569,10 +562,10 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 314.0
-offset_top = 27.0
-offset_right = 500.0
-offset_bottom = 123.0
+offset_left = -86.0
+offset_top = -48.0
+offset_right = 100.0
+offset_bottom = 48.0
 grow_horizontal = 0
 grow_vertical = 2
 mouse_filter = 2
@@ -726,10 +719,10 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 314.0
-offset_top = 27.0
-offset_right = 500.0
-offset_bottom = 123.0
+offset_left = -86.0
+offset_top = -48.0
+offset_right = 100.0
+offset_bottom = 48.0
 grow_horizontal = 0
 grow_vertical = 2
 mouse_filter = 2
@@ -871,10 +864,10 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 314.0
-offset_top = 27.0
-offset_right = 500.0
-offset_bottom = 123.0
+offset_left = -86.0
+offset_top = -48.0
+offset_right = 100.0
+offset_bottom = 48.0
 grow_horizontal = 0
 grow_vertical = 2
 mouse_filter = 2

@@ -1,24 +1,40 @@
 extends Control
 
+var is_in_menu = false
+
 func _input(event):
-	if Input.is_action_just_pressed("esc"):
+	if Input.is_action_just_pressed("esc") and is_in_menu == false:
+		is_in_menu = true
 		$esc_menu.show()
 		$AnimationPlayer.play_backwards("open_esc")
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		if GVar.is_ingame == true:
 			$esc_menu/HBoxContainer/VBoxContainer/Save_and_quit.show()
 			$esc_menu/HBoxContainer/VBoxContainer/Save_and_quit_normal.hide()
-		else:
+		elif GVar.is_ingame == false:
 			$esc_menu/HBoxContainer/VBoxContainer/Save_and_quit.hide()
 			$esc_menu/HBoxContainer/VBoxContainer/Save_and_quit_normal.show()
 		get_tree().paused = true
+	elif Input.is_action_just_pressed("esc") and is_in_menu == true:
+		is_in_menu = false
+		get_tree().paused = false
+		$AnimationPlayer.play("open_esc")
+		await get_tree().create_timer(0.2).timeout
+		$esc_menu.hide()
+		if GVar.is_ingame == true:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		elif GVar.is_ingame == false:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _on_continue_pressed():
 	get_tree().paused = false
 	$AnimationPlayer.play("open_esc")
 	await get_tree().create_timer(0.2).timeout
 	$esc_menu.hide()
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	if GVar.is_ingame == true:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	elif GVar.is_ingame == false:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _on_save_and_quit_pressed():
 	$ConfirmationDialog.popup_centered()

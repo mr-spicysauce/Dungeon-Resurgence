@@ -30,6 +30,7 @@ func _ready():
 	add_child(health_texture)
 	
 	max_health = randf_range(25,50)
+	max_health = (max_health * GVar.difficulty)
 	max_health = round(max_health)
 	coin_for_kill = randf_range(0,3)
 	coin_for_kill = round(coin_for_kill)
@@ -83,6 +84,7 @@ func take_damage():
 		ragdoll.global_rotation = global_rotation
 		GVar.add_coins = coin_for_kill
 		GVar.Monsters_killed += 1
+		GVar.bad_guys_killed_in_lvl += 1
 		self.queue_free()
 
 func _on_area_3d_body_entered(body):

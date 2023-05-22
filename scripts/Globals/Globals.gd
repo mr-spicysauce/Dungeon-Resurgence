@@ -7,12 +7,12 @@ func _physics_process(delta):
 #Player stats (All needs to be saved for when you load the game)
 var Max_health =100
 var Max_shield = 0
-var Coins = 100
-var Item1 = "short_sword"
+var Coins = 40
+var Item1 = "long_sword"
 var Item2 = "small_health"
-var Item3 = "small_health"
-var Item4 = "small_health"
-var Item5 = "small_health"
+var Item3 = null
+var Item4 = null
+var Item5 = null
 var Monsters_killed = 0
 var Deaths = 0
 
@@ -31,6 +31,9 @@ var item_drop_pos
 var is_ingame = false
 var add_coins = 0
 var just_quit = false
+var bad_guys_killed_in_lvl = 0
+var difficulty = 1
+var can_buy_item = true
 
 #func  _ready():
 #	print(Item_list.get("short_sword").get("damage"))
@@ -68,6 +71,6 @@ var Item_list = {
 		"healing":25,
 		"atk_speed":0.75,
 		"cost":20
-	}
+	},
 
 }

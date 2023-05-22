@@ -9,8 +9,11 @@ var random_spawn_pos
 var random_spawn_ammount
 
 func _ready():
+	GVar.bad_guys_killed_in_lvl = 0
 	
 	random_spawn_ammount = randf_range(4,10)
+	random_spawn_ammount = (random_spawn_ammount * GVar.difficulty)
+	print("spawing " + str(random_spawn_ammount))
 	spawn_bad_guy(random_spawn_ammount)
 	
 	GVar.is_ingame = true
@@ -21,8 +24,10 @@ func _physics_process(delta):
 	get_tree().call_group("bad_guy", "update_target_location",player.global_transform.origin)
 
 func _on_area_3d_body_entered(body):
-	if body.is_in_group("player"):
+	print(GVar.bad_guys_killed_in_lvl)
+	if body.is_in_group("player") and GVar.bad_guys_killed_in_lvl >= random_spawn_ammount:
 		get_tree().change_scene_to_file("res://levels/lvl_1.tscn")
+		GVar.difficulty += 0.2
 
 
 func spawn_bad_guy(ammount):

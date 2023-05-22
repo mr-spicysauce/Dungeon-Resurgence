@@ -3,6 +3,7 @@ extends Node3D
 signal add_coins
 
 func _ready():
+	GVar.is_ingame = false
 	
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	$HUD.hide()

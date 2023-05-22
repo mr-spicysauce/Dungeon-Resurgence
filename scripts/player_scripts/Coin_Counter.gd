@@ -29,6 +29,7 @@ func _coin_add(ammount):
 			Sound_play.queue_free()
 		)
 		await get_tree().create_timer(0.1).timeout
+	
 
 func _coin_remove(ammount):
 	for i in ammount:
@@ -36,7 +37,7 @@ func _coin_remove(ammount):
 		var Sound_play = AudioStreamPlayer.new()
 		self.add_child(Sound_play)
 		Sound_play.set_stream(remove_coin)
-		Sound_play.volume_db = 0
+		Sound_play.volume_db = -20
 		
 		Sound_play.play()
 		update_coins()
@@ -44,3 +45,4 @@ func _coin_remove(ammount):
 			Sound_play.queue_free()
 		)
 		await get_tree().create_timer(0.1).timeout
+	GVar.can_buy_item = true

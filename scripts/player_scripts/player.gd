@@ -73,7 +73,11 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion: look_dir = event.relative * 0.01
 	if Input.is_action_just_pressed("jump"): jumping = true
 	if Input.is_action_just_pressed("exit"): get_tree().quit()
-	if Input.is_action_just_pressed("sprint"): speed = 8
+	if Input.is_action_pressed("sprint"):
+		speed = 10
+	else:
+		speed = 6
+	
 	
 	if Input.get_vector("move_left", "move_right", "move_forward", "move_backwards") and step == true and is_on_floor():
 		step = false
@@ -99,7 +103,7 @@ func _input(event: InputEvent) -> void:
 			$Camera/AudioStreamPlayer3D.set_stream(drink_sound.pick_random())
 			$Camera/AudioStreamPlayer3D.play()
 			await get_tree().create_timer(0.75).timeout
-			GVar.Max_health += 20
+			GVar.Max_health += 25
 			$HUD/InventrySystem.used_item()
 			can_atk = true
 			GVar.is_ingame = true
