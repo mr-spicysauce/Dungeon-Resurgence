@@ -1512,10 +1512,10 @@ layout_mode = 2
 text = "Long Sword
 "
 
-[node name="Button3" type="Button" parent="SHOP TEXT/MarginContainer2/MarginContainer/HBoxContainer/HBoxItems/VBoxItems2"]
+[node name="Brick" type="Button" parent="SHOP TEXT/MarginContainer2/MarginContainer/HBoxContainer/HBoxItems/VBoxItems2"]
 custom_minimum_size = Vector2(128, 32)
 layout_mode = 2
-text = "Item 3"
+text = "Brick"
 
 [node name="background" type="ColorRect" parent="SHOP TEXT/MarginContainer2/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(352.991, 0)
@@ -1704,6 +1704,7 @@ texture = SubResource("ViewportTexture_pr61a")
 [connection signal="pressed" from="SHOP TEXT/MarginContainer2/MarginContainer/HBoxContainer/HBoxItems/VBoxItems/MoreShield" to="SHOP TEXT/Shop_sorter" method="_on_more_shield_pressed"]
 [connection signal="pressed" from="SHOP TEXT/MarginContainer2/MarginContainer/HBoxContainer/HBoxItems/VBoxItems2/ShortSword" to="SHOP TEXT/Shop_sorter" method="_on_short_sword_pressed"]
 [connection signal="pressed" from="SHOP TEXT/MarginContainer2/MarginContainer/HBoxContainer/HBoxItems/VBoxItems2/LongSword" to="SHOP TEXT/Shop_sorter" method="_on_long_sword_pressed"]
+[connection signal="pressed" from="SHOP TEXT/MarginContainer2/MarginContainer/HBoxContainer/HBoxItems/VBoxItems2/Brick" to="SHOP TEXT/Shop_sorter" method="_on_brick_pressed"]
 [connection signal="pressed" from="SHOP TEXT/MarginContainer2/MarginContainer/HBoxContainer/background/MarginContainer/Control/VBoxContainer2/Buy Item" to="SHOP TEXT/Shop_sorter" method="_on_buy_item_pressed"]
 [connection signal="value_changed" from="SHOP TEXT/MarginContainer2/MarginContainer/HBoxContainer/background/MarginContainer/Control/HBoxItemStats/VBoxItemStats2/VBoxContainer/SpinBox" to="SHOP TEXT/Shop_sorter" method="_on_spin_box_value_changed"]
 [connection signal="pressed" from="SHOP TEXT/MarginContainer2/MarginContainer/VBoxContainer/HBoxContainer/Go_out_shop" to="." method="_on_go_out_shop_pressed"]

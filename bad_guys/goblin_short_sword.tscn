@@ -1141,6 +1141,7 @@ _data = {
 radius = 0.4
 
 [node name="Goblin_short_sword" type="CharacterBody3D" groups=["bad_guy"]]
+collision_layer = 3
 script = ExtResource("1_b1ow1")
 
 [node name="Skeleton3D" type="Skeleton3D" parent="."]

@@ -977,6 +977,7 @@ height = 0.1
 script = ExtResource("1_ii6wq")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -988,6 +989,7 @@ mesh = SubResource("ArrayMesh_bsj54")
 skeleton = NodePath("")
 
 [node name="RigidBody3D2" type="RigidBody3D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -999,6 +1001,7 @@ mesh = SubResource("ArrayMesh_y408q")
 skeleton = NodePath("")
 
 [node name="RigidBody3D3" type="RigidBody3D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D3"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -1010,6 +1013,7 @@ mesh = SubResource("ArrayMesh_6kmoa")
 skeleton = NodePath("")
 
 [node name="RigidBody3D4" type="RigidBody3D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D4"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -1021,6 +1025,7 @@ mesh = SubResource("ArrayMesh_kqrv3")
 skeleton = NodePath("")
 
 [node name="RigidBody3D5" type="RigidBody3D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D5"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -1032,6 +1037,7 @@ mesh = SubResource("ArrayMesh_epx78")
 skeleton = NodePath("")
 
 [node name="RigidBody3D6" type="RigidBody3D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D6"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -1043,6 +1049,7 @@ mesh = SubResource("ArrayMesh_yifnt")
 skeleton = NodePath("")
 
 [node name="RigidBody3D7" type="RigidBody3D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D7"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -1054,6 +1061,7 @@ mesh = SubResource("ArrayMesh_ydpjv")
 skeleton = NodePath("")
 
 [node name="RigidBody3D8" type="RigidBody3D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D8"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -1065,6 +1073,7 @@ mesh = SubResource("ArrayMesh_f8td6")
 skeleton = NodePath("")
 
 [node name="RigidBody3D9" type="RigidBody3D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D9"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -1076,6 +1085,7 @@ mesh = SubResource("ArrayMesh_xe3cb")
 skeleton = NodePath("")
 
 [node name="RigidBody3D10" type="RigidBody3D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D10"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -1087,6 +1097,7 @@ mesh = SubResource("ArrayMesh_pkgiw")
 skeleton = NodePath("")
 
 [node name="RigidBody3D11" type="RigidBody3D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D11"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -1098,6 +1109,7 @@ mesh = SubResource("ArrayMesh_m17mc")
 skeleton = NodePath("")
 
 [node name="RigidBody3D12" type="RigidBody3D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D12"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -1109,6 +1121,7 @@ mesh = SubResource("ArrayMesh_dd25w")
 skeleton = NodePath("")
 
 [node name="RigidBody3D13" type="RigidBody3D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D13"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -1120,6 +1133,7 @@ mesh = SubResource("ArrayMesh_iry8g")
 skeleton = NodePath("")
 
 [node name="RigidBody3D14" type="RigidBody3D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D14"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -1131,6 +1145,7 @@ mesh = SubResource("ArrayMesh_cwdj2")
 skeleton = NodePath("")
 
 [node name="RigidBody3D15" type="RigidBody3D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D15"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -1142,6 +1157,7 @@ mesh = SubResource("ArrayMesh_pbiyu")
 skeleton = NodePath("")
 
 [node name="RigidBody3D16" type="RigidBody3D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D16"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -1153,6 +1169,7 @@ mesh = SubResource("ArrayMesh_cjjwn")
 skeleton = NodePath("")
 
 [node name="RigidBody3D17" type="RigidBody3D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D17"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -1164,6 +1181,7 @@ mesh = SubResource("ArrayMesh_2vuse")
 skeleton = NodePath("")
 
 [node name="RigidBody3D18" type="RigidBody3D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D18"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -1175,6 +1193,7 @@ mesh = SubResource("ArrayMesh_ea3xk")
 skeleton = NodePath("")
 
 [node name="RigidBody3D19" type="RigidBody3D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D19"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -1186,6 +1205,7 @@ mesh = SubResource("ArrayMesh_gklbh")
 skeleton = NodePath("")
 
 [node name="RigidBody3D20" type="RigidBody3D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D20"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -1197,6 +1217,7 @@ mesh = SubResource("ArrayMesh_p72kd")
 skeleton = NodePath("")
 
 [node name="RigidBody3D21" type="RigidBody3D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D21"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -1208,6 +1229,7 @@ mesh = SubResource("ArrayMesh_00g6d")
 skeleton = NodePath("")
 
 [node name="RigidBody3D22" type="RigidBody3D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D22"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)

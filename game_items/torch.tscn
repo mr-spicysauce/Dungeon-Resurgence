@@ -180,6 +180,7 @@ mesh = SubResource("ArrayMesh_g0nmh")
 skeleton = NodePath("")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Torch2"]
+transform = Transform3D(5, 1.19209e-07, 0, -1.19209e-07, 5, 0, 0, 0, 5, 0.647049, 2.41482, 0)
 light_color = Color(1, 0.843137, 0.45098, 1)
 light_energy = 3.0
 light_volumetric_fog_energy = 0.25

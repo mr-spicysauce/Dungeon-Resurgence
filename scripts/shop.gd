@@ -86,6 +86,17 @@ func _on_more_shield_pressed():
 	change_item_info("You can buy more Shield for 1 coin per Shield point")
 	change_image(load("res://recorces/HotBar_Item_textures/sheild.png"))
 
+func _on_brick_pressed():
+	$"../MarginContainer2/MarginContainer/HBoxContainer/background/MarginContainer/Control/HBoxItemStats/VBoxItemStats2/VBoxContainer".hide()
+	item_to_buy = "brick"
+	change_cost(GVar.Item_list.get("brick").get("cost"))
+	change_damge( "Damage: " + str(GVar.Item_list.get("brick").get("damage")))
+	change_item_name("Brick")
+	change_item_type(GVar.Item_list.get("brick").get("type"))
+	change_item_info("This the last hope. A brick... Good luck!")
+	change_atk_speed( "Attack Speed: " + str(GVar.Item_list.get("brick").get("atk_speed")))
+	change_image(load("res://recorces/HotBar_Item_textures/brick.png"))
+
 func _on_buy_item_pressed():
 	$"../MarginContainer2/ConfirmationDialog".popup_centered()
 	$"../MarginContainer2/ConfirmationDialog".dialog_text = "Are you sure you want to buy " + str(item_name) + " for " + str(coins_cost) + " coins?"
