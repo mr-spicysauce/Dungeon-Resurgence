@@ -13,6 +13,8 @@ config_version=5
 config/name="8.2 dungen game"
 run/main_scene="res://levels/main_menu.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="res://splash_screen.png"
 config/icon="res://icon.svg"
 
 [autoload]
