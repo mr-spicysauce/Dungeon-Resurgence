@@ -33,6 +33,7 @@ var is_ingame = false
 var add_coins = 0
 var just_quit = false
 var bad_guys_killed_in_lvl = 0
+var bad_guys_to_kill = 0
 var difficulty = 1
 var can_buy_item = true
 
