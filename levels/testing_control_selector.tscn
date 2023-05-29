@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjfsf5vgxi7r5"]
+
+[ext_resource type="Script" path="res://scripts/testing_control_selector.gd" id="1_x0wc1"]
+[ext_resource type="Texture2D" uid="uid://dojuhsnrab08o" path="res://recorces/Xelu_Free_Controller&Key_Prompts/Keyboard & Mouse/Light/0_Key_Light.png" id="2_xk6kv"]
+
+[node name="Testing_control_selector" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x0wc1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "GET YOUR INPUT"
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "YOUR INPUT IS: NULL"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_xk6kv")
+stretch_mode = 2
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
