@@ -20,9 +20,9 @@ var damage = 5
 var player
 var walking
 var coin_for_kill
-
 var should_move = true
 var can_atk = false
+
 
 func _ready():
 	
@@ -46,26 +46,28 @@ func _physics_process(delta):
 	$bad_guy_text/SubViewport/VBoxContainer/TextureProgressBar.value = health
 	$bad_guy_text/SubViewport/VBoxContainer/TextureProgressBar.max_value = max_health
 	$bad_guy_text/SubViewport/VBoxContainer/Label.text = "Goblin Short Sword"
-	
-	look_at(Vector3(GVar.player_pos.x, GVar.player_pos.y, GVar.player_pos.z))
-	rotate_object_local(Vector3.UP, PI)
-	rotation_degrees.x = 0
 	var current_location = global_transform.origin
 	var next_location = nav_agent.get_next_path_position()
 	var new_velocity = (next_location - current_location).normalized() * SPEED
 
-	if $NavigationAgent3D.distance_to_target() < 1.5:
+	if $NavigationAgent3D.distance_to_target() < 1.5 or $NavigationAgent3D.distance_to_target() >=15:
 		should_move = false
-
 	else:
 		should_move = true
+
 	velocity = new_velocity
 	if should_move:
 		move_and_slide()
 
 func update_target_location(target_location):
-	print($NavigationAgent3D.distance_to_target())
 	$NavigationAgent3D.set_target_position(target_location)
+	
+	if $NavigationAgent3D.distance_to_target() >= 15:
+		pass
+	else:
+		look_at(Vector3(GVar.player_pos.x, GVar.player_pos.y, GVar.player_pos.z))
+		rotate_object_local(Vector3.UP, PI)
+		rotation_degrees.x = 0
 
 func _on_animation_player_animation_finished(anim_name):
 	if walking == true:

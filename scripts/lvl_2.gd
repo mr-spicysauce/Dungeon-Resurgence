@@ -11,6 +11,8 @@ var random_spawn_ammount
 var random_pot_pos
 var pot_amount
 
+var door_can_open = true
+
 func _ready():
 	GVar.bad_guys_killed_in_lvl = 0
 	random_spawn_ammount = randf_range(4,8)
@@ -25,9 +27,14 @@ func _ready():
 func _physics_process(delta):
 	await get_tree().create_timer(1).timeout
 	get_tree().call_group("bad_guy", "update_target_location",player.global_transform.origin)
+	
+	if GVar.bad_guys_killed_in_lvl >= GVar.bad_guys_to_kill and door_can_open == true:
+		door_can_open = false
+		$lvl2/door1/AudioStreamPlayer3D.play()
+		$lvl2/AnimationPlayer.play("open_door_1")
 
 func spawn_lvl():
-	spawn_bricks(randf_range(25,50))
+	spawn_bricks(randf_range(40,80))
 	spawn_pillars(5)
 	spawn_pots(pot_amount)
 	$NavigationRegion3D.bake_navigation_mesh()

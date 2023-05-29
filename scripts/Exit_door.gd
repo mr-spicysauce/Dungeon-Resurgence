@@ -2,6 +2,7 @@ extends MeshInstance3D
 
 var lvl = [
 	"res://levels/lvl_1.tscn",
+	"res://levels/lvl_1.tscn",
 	"res://levels/lvl_2.tscn"
 ]
 
