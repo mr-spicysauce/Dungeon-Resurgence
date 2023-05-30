@@ -15,7 +15,7 @@
 [resource]
 Button/colors/font_color = Color(0, 0, 0, 1)
 Button/colors/font_focus_color = Color(0.305882, 0.305882, 0.305882, 1)
-Button/colors/font_hover_color = Color(0.305882, 0.305882, 0.305882, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
 Button/colors/font_outline_color = Color(1, 1, 1, 0)
 Button/colors/font_pressed_color = Color(0.427451, 0.427451, 0.427451, 1)
 Button/colors/icon_pressed_color = Color(1, 1, 1, 0)
@@ -27,6 +27,7 @@ Button/styles/hover = SubResource("StyleBoxEmpty_jb6nf")
 Button/styles/normal = SubResource("StyleBoxEmpty_dhqka")
 Button/styles/pressed = SubResource("StyleBoxEmpty_ki0ye")
 CheckBox/constants/h_separation = 33
+CheckBox/icons/checked = null
 Label/colors/font_color = Color(0, 0, 0, 1)
 Label/font_sizes/font_size = 64
 Label/fonts/font = ExtResource("1_1p2ga")

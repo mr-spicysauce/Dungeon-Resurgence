@@ -1,35 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dc5yft1fyvocb"]
+[gd_scene load_steps=11 format=3 uid="uid://dc5yft1fyvocb"]
 
 [ext_resource type="Script" path="res://scripts/Options_menu.gd" id="1_yd3lx"]
 [ext_resource type="Theme" uid="uid://dg7yqs5xm6yb3" path="res://recorces/themes/Menu_theme.tres" id="2_way3g"]
-
-[sub_resource type="Animation" id="Animation_mukbd"]
-resource_name = "options_move"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(-300, 0)]
-}
+[ext_resource type="Texture2D" uid="uid://bu6p81e40xadq" path="res://recorces/GUI/slected_box.png" id="3_gjwy3"]
+[ext_resource type="Texture2D" uid="uid://bjr1nvr3t58mk" path="res://recorces/GUI/unslected_box.png" id="4_clj8u"]
+[ext_resource type="AudioStream" uid="uid://0ylyxebul06h" path="res://sound_effects/click.wav" id="5_5oaq3"]
 
 [sub_resource type="Animation" id="Animation_yfcc3"]
 length = 0.001
@@ -82,46 +57,6 @@ tracks/3/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_tlw6l"]
-resource_name = "move_graphics"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("GraphicsMargin:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(-300, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_m0wwv"]
 resource_name = "move_audio"
 length = 0.2
@@ -162,6 +97,74 @@ tracks/2/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_tlw6l"]
+resource_name = "move_graphics"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GraphicsMargin:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-300, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mukbd"]
+resource_name = "options_move"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-300, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y6e15"]
 _data = {
 "RESET": SubResource("Animation_yfcc3"),
@@ -171,14 +174,12 @@ _data = {
 }
 
 [node name="HBox_Options_menu" type="HBoxContainer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 1920.0
+offset_bottom = 1080.0
 script = ExtResource("1_yd3lx")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 32
 
@@ -212,7 +213,6 @@ text = "Back"
 alignment = 0
 
 [node name="GraphicsMargin" type="MarginContainer" parent="."]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_constants/margin_left = 32
@@ -234,16 +234,72 @@ horizontal_alignment = 1
 [node name="OptionButton" type="OptionButton" parent="GraphicsMargin/VBoxContainer/resolution"]
 layout_mode = 2
 
+[node name="Label2" type="Label" parent="GraphicsMargin/VBoxContainer/resolution"]
+layout_mode = 2
+theme = ExtResource("2_way3g")
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 16
+text = "Resolution is work in progress. Fullscreen is recommended!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="FullScreenCheckBox" type="CheckBox" parent="GraphicsMargin/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_way3g")
+theme_override_icons/checked = ExtResource("3_gjwy3")
+theme_override_icons/unchecked = ExtResource("4_clj8u")
+button_pressed = true
 text = "Fullscreen"
 
 [node name="VsyncCheckBox" type="CheckBox" parent="GraphicsMargin/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_way3g")
+theme_override_icons/checked = ExtResource("3_gjwy3")
+theme_override_icons/unchecked = ExtResource("4_clj8u")
 text = "Vsync
 "
+
+[node name="limitFPS" type="VBoxContainer" parent="GraphicsMargin/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GraphicsMargin/VBoxContainer/limitFPS"]
+layout_mode = 2
+theme = ExtResource("2_way3g")
+text = "Limit FPS: 260"
+horizontal_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="GraphicsMargin/VBoxContainer/limitFPS"]
+layout_mode = 2
+min_value = 1.0
+max_value = 360.0
+value = 360.0
+rounded = true
+
+[node name="show_fpsCheckBox" type="CheckBox" parent="GraphicsMargin/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_way3g")
+theme_override_icons/checked = ExtResource("3_gjwy3")
+theme_override_icons/unchecked = ExtResource("4_clj8u")
+text = "Show FPS
+"
+
+[node name="Label" type="Label" parent="GraphicsMargin/VBoxContainer/show_fpsCheckBox"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = -13.0
+offset_bottom = 13.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 18
+text = "(in game)"
 
 [node name="apply_graphics" type="Button" parent="GraphicsMargin/VBoxContainer"]
 layout_mode = 2
@@ -256,6 +312,12 @@ layout_mode = 2
 theme = ExtResource("2_way3g")
 text = "Back"
 alignment = 0
+
+[node name="CheckBox" type="CheckBox" parent="GraphicsMargin/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Dev Debug menu"
 
 [node name="ControlMargin" type="MarginContainer" parent="."]
 visible = false
@@ -296,6 +358,9 @@ min_value = -20.0
 max_value = 20.0
 rounded = true
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AudioMargin/VBoxContainer/master_audio"]
+stream = ExtResource("5_5oaq3")
+
 [node name="background_audio" type="VBoxContainer" parent="AudioMargin/VBoxContainer"]
 visible = false
 layout_mode = 2
@@ -331,7 +396,10 @@ libraries = {
 [connection signal="item_selected" from="GraphicsMargin/VBoxContainer/resolution/OptionButton" to="." method="_on_option_button_item_selected"]
 [connection signal="toggled" from="GraphicsMargin/VBoxContainer/FullScreenCheckBox" to="." method="_on_full_screen_check_box_toggled"]
 [connection signal="toggled" from="GraphicsMargin/VBoxContainer/VsyncCheckBox" to="." method="_on_vsync_check_box_toggled"]
+[connection signal="value_changed" from="GraphicsMargin/VBoxContainer/limitFPS/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="toggled" from="GraphicsMargin/VBoxContainer/show_fpsCheckBox" to="." method="_on_show_fps_check_box_toggled"]
 [connection signal="pressed" from="GraphicsMargin/VBoxContainer/Back_to_options" to="." method="_on_back_to_options_pressed"]
+[connection signal="toggled" from="GraphicsMargin/VBoxContainer/CheckBox" to="." method="_on_check_box_toggled"]
 [connection signal="value_changed" from="AudioMargin/VBoxContainer/master_audio/m_audio_slider" to="." method="_on_m_audio_slider_value_changed"]
 [connection signal="value_changed" from="AudioMargin/VBoxContainer/background_audio/b_audio_slider" to="." method="_on_b_audio_slider_value_changed"]
 [connection signal="pressed" from="AudioMargin/VBoxContainer/Back_to_options_audio" to="." method="_on_back_to_options_audio_pressed"]

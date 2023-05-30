@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dfnv3d3t5br26"]
+[gd_scene load_steps=22 format=3 uid="uid://dfnv3d3t5br26"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_kochb"]
 [ext_resource type="Script" path="res://scripts/player_scripts/Sheild_bar.gd" id="1_qpcqc"]
@@ -13,7 +13,10 @@
 [ext_resource type="Script" path="res://scripts/player_scripts/Coin_Counter.gd" id="9_h1ffi"]
 [ext_resource type="Texture2D" uid="uid://bvik8jgxww43s" path="res://recorces/GUI/Coin_background.png" id="10_84xtd"]
 [ext_resource type="Theme" uid="uid://dg7yqs5xm6yb3" path="res://recorces/themes/Menu_theme.tres" id="12_wqvif"]
+[ext_resource type="PackedScene" uid="uid://dc5yft1fyvocb" path="res://objects/option_menu.tscn" id="13_d5sep"]
 [ext_resource type="Theme" uid="uid://dqa7rgvfsa0gk" path="res://recorces/themes/Popup_box.tres" id="14_85tcj"]
+[ext_resource type="Script" path="res://scripts/player_scripts/debug_margin.gd" id="16_hmpej"]
+[ext_resource type="PackedScene" uid="uid://cggqb75a8w8r" path="res://addons/debug_menu/debug_menu.tscn" id="17_neqsl"]
 
 [sub_resource type="Theme" id="Theme_o0bxk"]
 Label/fonts/font = ExtResource("4_4bgo6")
@@ -70,7 +73,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(-200, 0)]
+"values": [Vector2(0, 0), Vector2(-300, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k4s3c"]
@@ -89,6 +92,9 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_kochb")
+
+[node name="DebugMenu" parent="." instance=ExtResource("17_neqsl")]
+layout_mode = 1
 
 [node name="InventrySystem" parent="." instance=ExtResource("1_r4xxl")]
 
@@ -185,9 +191,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -324.0
-offset_top = -150.0
-offset_right = 324.0
+offset_left = -407.0
+offset_top = -166.0
+offset_right = 407.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 0
@@ -302,6 +308,10 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
+[node name="HBox_Options_menu" parent="esc_menu" instance=ExtResource("13_d5sep")]
+visible = false
+layout_mode = 2
+
 [node name="HBoxContainer" type="HBoxContainer" parent="esc_menu"]
 layout_mode = 2
 
@@ -364,7 +374,37 @@ theme = ExtResource("14_85tcj")
 dialog_text = "       The game just saved!
 Are you sure you want to quit?"
 
+[node name="debug_margin" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+offset_right = 219.0
+offset_bottom = 109.0
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+script = ExtResource("16_hmpej")
+
+[node name="coin_background" type="TextureRect" parent="debug_margin"]
+modulate = Color(1, 1, 1, 0.6)
+layout_mode = 2
+texture = ExtResource("10_84xtd")
+
+[node name="Control" type="Control" parent="debug_margin"]
+layout_mode = 2
+
+[node name="fps" type="Label" parent="debug_margin/Control"]
+layout_mode = 2
+offset_left = 31.0
+offset_top = 25.0
+offset_right = 172.0
+offset_bottom = 68.0
+size_flags_horizontal = 4
+theme = SubResource("Theme_o0bxk")
+theme_override_colors/font_color = Color(0.196078, 1, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "FPS:9999"
+
 [connection signal="pressed" from="esc_menu/HBoxContainer/VBoxContainer/continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="esc_menu/HBoxContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="esc_menu/HBoxContainer/VBoxContainer/Save_and_quit" to="." method="_on_save_and_quit_pressed"]
 [connection signal="pressed" from="esc_menu/HBoxContainer/VBoxContainer/Save_and_quit_normal" to="." method="_on_save_and_quit_normal_pressed"]
 [connection signal="pressed" from="esc_menu/HBoxContainer/VBoxContainer/Temp_quit" to="." method="_on_temp_quit_pressed"]

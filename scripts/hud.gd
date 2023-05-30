@@ -63,3 +63,17 @@ func _on_confirmation_dialog_2_confirmed():
 	$AnimationPlayer.play_backwards("open_esc")
 	await get_tree().create_timer(0.2).timeout
 	get_tree().quit()
+
+func hide_options():
+	$AnimationPlayer.play("open_esc")
+	await get_tree().create_timer(0.4).timeout
+	$esc_menu/HBox_Options_menu.hide()
+	$esc_menu/HBoxContainer.show()
+	$AnimationPlayer.play_backwards("open_esc")
+
+func _on_settings_pressed():
+	$AnimationPlayer.play("open_esc")
+	await get_tree().create_timer(0.4).timeout
+	$esc_menu/HBoxContainer.hide()
+	$esc_menu/HBox_Options_menu.show()
+	$AnimationPlayer.play_backwards("open_esc")

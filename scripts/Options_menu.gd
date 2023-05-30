@@ -6,10 +6,13 @@ extends HBoxContainer
 
 var master_bus = AudioServer.get_bus_index("Master")
 
+var vsync = false
+
 func _ready():
 	print(DisplayServer.screen_get_size())
 	add_res_items()
 	get_screen_size_drop_menu()
+	$AudioMargin/VBoxContainer/master_audio/m_audio_slider.value = GVar.master_sound_db
 
 func _on_back_to_mainmenu_button_pressed():
 	get_parent().get_parent().hide_options()
@@ -76,10 +79,19 @@ func get_screen_size_drop_menu():
 
 func _on_vsync_check_box_toggled(button_pressed):
 	if button_pressed == true:
-		DisplayServer.VSYNC_ENABLED
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
+		$GraphicsMargin/VBoxContainer/limitFPS.hide()
+		Engine.max_fps = 9999
 	else:
-		DisplayServer.VSYNC_DISABLED
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
+		$GraphicsMargin/VBoxContainer/limitFPS.show()
+		Engine.max_fps = $GraphicsMargin/VBoxContainer/limitFPS/HSlider.value
 
+func _on_show_fps_check_box_toggled(button_pressed):
+	if button_pressed == true:
+		GVar.show_fps = true
+	else:
+		GVar.show_fps = false
 
 func _on_graphics_setting_button_pressed():
 	$AnimationPlayer.play("options_move")
@@ -123,9 +135,10 @@ func _on_back_to_options_audio_pressed():
 
 func _on_m_audio_slider_value_changed(value):
 	
-	print(AudioServer.get_bus_volume_db(master_bus))
+	$AudioMargin/VBoxContainer/master_audio/AudioStreamPlayer.play()
 	
 	AudioServer.set_bus_volume_db(master_bus, value)
+	GVar.master_sound_db = value
 	
 	if value == -20:
 		AudioServer.set_bus_mute(master_bus,true)
@@ -142,4 +155,14 @@ func _on_b_audio_slider_value_changed(value):
 
 func _on_audio_stream_player_finished():
 	$AudioStreamPlayer.play()
-	
+
+func _on_h_slider_value_changed(value):
+	if vsync == false:
+		$GraphicsMargin/VBoxContainer/limitFPS/Label.text = "Limit FPS: " + str(value)
+		Engine.max_fps = value
+
+func _on_check_box_toggled(button_pressed):
+	if button_pressed == true:
+		GVar.show_advanced_debug = true
+	else:
+		GVar.show_advanced_debug = false
