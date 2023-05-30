@@ -17,7 +17,6 @@ func _ready():
 	spawn_bad_guy(random_spawn_ammount)
 	GVar.is_ingame = true
 
-
 func _physics_process(delta):
 	await get_tree().create_timer(1).timeout
 	get_tree().call_group("bad_guy", "update_target_location",player.global_transform.origin)

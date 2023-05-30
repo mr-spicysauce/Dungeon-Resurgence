@@ -25,6 +25,13 @@ func _on_options_button_pressed():
 	$Control/Option_menu.show()
 	AnimPlayer.play_backwards("options_move")
 
+func hide_options():
+	AnimPlayer.play("options_move")
+	await get_tree().create_timer(0.4).timeout
+	$Control/Option_menu.hide()
+	$Control/Option_menu.position = Vector2(-300,0)
+	$Control/HBox_Main_menu.show()
+	AnimPlayer.play_backwards("Gui_move")
 
 func _on_play_game_button_pressed():
 	AnimPlayer.play("Gui_move")
