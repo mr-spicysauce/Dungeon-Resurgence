@@ -1,13 +1,20 @@
-[gd_scene load_steps=14 format=3 uid="uid://dc5yft1fyvocb"]
+[gd_scene load_steps=21 format=3 uid="uid://dc5yft1fyvocb"]
 
 [ext_resource type="Script" path="res://scripts/Options_menu.gd" id="1_yd3lx"]
 [ext_resource type="Theme" uid="uid://dg7yqs5xm6yb3" path="res://recorces/themes/Menu_theme.tres" id="2_way3g"]
 [ext_resource type="Texture2D" uid="uid://bu6p81e40xadq" path="res://recorces/GUI/slected_box.png" id="3_gjwy3"]
 [ext_resource type="Texture2D" uid="uid://bjr1nvr3t58mk" path="res://recorces/GUI/unslected_box.png" id="4_clj8u"]
 [ext_resource type="AudioStream" uid="uid://0ylyxebul06h" path="res://sound_effects/click.wav" id="5_5oaq3"]
-[ext_resource type="Texture2D" uid="uid://dojuhsnrab08o" path="res://recorces/Xelu_Free_Controller&Key_Prompts/Keyboard & Mouse/Light/0_Key_Light.png" id="5_krlmo"]
 [ext_resource type="Script" path="res://scripts/ControlSettings.gd" id="5_tvpn6"]
 [ext_resource type="AudioStream" uid="uid://c7qk1wh0scohr" path="res://sound_effects/button_click.wav" id="6_2uman"]
+[ext_resource type="Texture2D" uid="uid://b0xk2rfed0rw" path="res://recorces/Xelu_Free_Controller&Key_Prompts/Keyboard & Mouse/Light/W_Key_Light.png" id="6_psin2"]
+[ext_resource type="Texture2D" uid="uid://v2va2imy5cki" path="res://recorces/Xelu_Free_Controller&Key_Prompts/Keyboard & Mouse/Light/S_Key_Light.png" id="7_0jha8"]
+[ext_resource type="Texture2D" uid="uid://b40ckbo77rocj" path="res://recorces/Xelu_Free_Controller&Key_Prompts/Keyboard & Mouse/Light/D_Key_Light.png" id="8_1775t"]
+[ext_resource type="Texture2D" uid="uid://camx7d0yv0lmx" path="res://recorces/Xelu_Free_Controller&Key_Prompts/Keyboard & Mouse/Light/A_Key_Light.png" id="9_8q1vt"]
+[ext_resource type="Texture2D" uid="uid://45cu3flmim76" path="res://recorces/Xelu_Free_Controller&Key_Prompts/Keyboard & Mouse/Light/Space_Key_Light.png" id="10_trmyo"]
+[ext_resource type="Texture2D" uid="uid://cq3ngrjkhbr1a" path="res://recorces/Xelu_Free_Controller&Key_Prompts/Keyboard & Mouse/Light/Shift_Key_Light.png" id="11_513b6"]
+[ext_resource type="Texture2D" uid="uid://kiswj4hxp4u5" path="res://recorces/Xelu_Free_Controller&Key_Prompts/Keyboard & Mouse/Light/E_Key_Light.png" id="12_6xyjw"]
+[ext_resource type="Texture2D" uid="uid://o8sy5lrmj1uv" path="res://recorces/Xelu_Free_Controller&Key_Prompts/Keyboard & Mouse/Light/Q_Key_Light.png" id="13_2cc5k"]
 
 [sub_resource type="Animation" id="Animation_yfcc3"]
 length = 0.001
@@ -180,6 +187,8 @@ _data = {
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 3840.0
+offset_bottom = 2160.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_yd3lx")
@@ -332,18 +341,20 @@ size_flags_horizontal = 0
 theme_override_constants/margin_left = 32
 script = ExtResource("5_tvpn6")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ControlMargin"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ControlMargin"]
+layout_mode = 2
+theme_override_constants/separation = 192
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ControlMargin/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 32
 alignment = 1
 
-[node name="forwards_input" type="Button" parent="ControlMargin/VBoxContainer"]
+[node name="forwards_input" type="Button" parent="ControlMargin/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(500, 96)
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
 
-[node name="HboxContainer" type="HBoxContainer" parent="ControlMargin/VBoxContainer/forwards_input"]
+[node name="HboxContainer" type="HBoxContainer" parent="ControlMargin/HBoxContainer/VBoxContainer/forwards_input"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -352,52 +363,277 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="ControlMargin/VBoxContainer/forwards_input/HboxContainer"]
+[node name="Label" type="Label" parent="ControlMargin/HBoxContainer/VBoxContainer/forwards_input/HboxContainer"]
 layout_mode = 2
 theme = ExtResource("2_way3g")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "Forwards:"
 
-[node name="TextureRect" type="TextureRect" parent="ControlMargin/VBoxContainer/forwards_input/HboxContainer"]
+[node name="TextureRect" type="TextureRect" parent="ControlMargin/HBoxContainer/VBoxContainer/forwards_input/HboxContainer"]
 layout_mode = 2
-texture = ExtResource("5_krlmo")
+texture = ExtResource("6_psin2")
 
-[node name="backwards_input" type="Button" parent="ControlMargin/VBoxContainer"]
+[node name="forwards_input_apply" type="Button" parent="ControlMargin/HBoxContainer/VBoxContainer/forwards_input"]
+visible = false
+layout_mode = 2
+offset_left = 500.0
+offset_right = 685.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_way3g")
+text = "Apply"
+
+[node name="backwards_input" type="Button" parent="ControlMargin/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(500, 96)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 
-[node name="HboxContainer" type="HBoxContainer" parent="ControlMargin/VBoxContainer/backwards_input"]
+[node name="HboxContainer" type="HBoxContainer" parent="ControlMargin/HBoxContainer/VBoxContainer/backwards_input"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -236.5
-offset_top = -50.0
-offset_right = 236.5
-offset_bottom = 50.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="ControlMargin/VBoxContainer/backwards_input/HboxContainer"]
+[node name="Label" type="Label" parent="ControlMargin/HBoxContainer/VBoxContainer/backwards_input/HboxContainer"]
 layout_mode = 2
 theme = ExtResource("2_way3g")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "Backwards:"
 
-[node name="TextureRect" type="TextureRect" parent="ControlMargin/VBoxContainer/backwards_input/HboxContainer"]
+[node name="TextureRect" type="TextureRect" parent="ControlMargin/HBoxContainer/VBoxContainer/backwards_input/HboxContainer"]
 layout_mode = 2
-texture = ExtResource("5_krlmo")
+texture = ExtResource("7_0jha8")
 
-[node name="Back_to_options_control" type="Button" parent="ControlMargin/VBoxContainer"]
+[node name="backwards_input_apply" type="Button" parent="ControlMargin/HBoxContainer/VBoxContainer/backwards_input"]
+visible = false
+layout_mode = 2
+offset_left = 500.0
+offset_right = 685.0
+offset_bottom = 100.0
+theme = ExtResource("2_way3g")
+text = "Apply"
+
+[node name="right_input" type="Button" parent="ControlMargin/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 96)
+layout_mode = 2
+
+[node name="HboxContainer" type="HBoxContainer" parent="ControlMargin/HBoxContainer/VBoxContainer/right_input"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="ControlMargin/HBoxContainer/VBoxContainer/right_input/HboxContainer"]
+layout_mode = 2
+theme = ExtResource("2_way3g")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Right:"
+
+[node name="TextureRect" type="TextureRect" parent="ControlMargin/HBoxContainer/VBoxContainer/right_input/HboxContainer"]
+layout_mode = 2
+texture = ExtResource("8_1775t")
+
+[node name="right_input_apply" type="Button" parent="ControlMargin/HBoxContainer/VBoxContainer/right_input"]
+visible = false
+layout_mode = 2
+offset_left = 500.0
+offset_right = 685.0
+offset_bottom = 100.0
+theme = ExtResource("2_way3g")
+text = "Apply"
+
+[node name="left_input" type="Button" parent="ControlMargin/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 96)
+layout_mode = 2
+
+[node name="HboxContainer" type="HBoxContainer" parent="ControlMargin/HBoxContainer/VBoxContainer/left_input"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="ControlMargin/HBoxContainer/VBoxContainer/left_input/HboxContainer"]
+layout_mode = 2
+theme = ExtResource("2_way3g")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Left:"
+
+[node name="TextureRect" type="TextureRect" parent="ControlMargin/HBoxContainer/VBoxContainer/left_input/HboxContainer"]
+layout_mode = 2
+texture = ExtResource("9_8q1vt")
+
+[node name="left_input_apply" type="Button" parent="ControlMargin/HBoxContainer/VBoxContainer/left_input"]
+visible = false
+layout_mode = 2
+offset_left = 500.0
+offset_right = 685.0
+offset_bottom = 100.0
+theme = ExtResource("2_way3g")
+text = "Apply"
+
+[node name="Back_to_options_control" type="Button" parent="ControlMargin/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_way3g")
 text = "Back"
 alignment = 0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="ControlMargin/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="jump_input" type="Button" parent="ControlMargin/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(500, 96)
+layout_mode = 2
+
+[node name="HboxContainer" type="HBoxContainer" parent="ControlMargin/HBoxContainer/VBoxContainer2/jump_input"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="ControlMargin/HBoxContainer/VBoxContainer2/jump_input/HboxContainer"]
+layout_mode = 2
+theme = ExtResource("2_way3g")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Jump:"
+
+[node name="TextureRect" type="TextureRect" parent="ControlMargin/HBoxContainer/VBoxContainer2/jump_input/HboxContainer"]
+layout_mode = 2
+texture = ExtResource("10_trmyo")
+
+[node name="jump_input_apply" type="Button" parent="ControlMargin/HBoxContainer/VBoxContainer2/jump_input"]
+visible = false
+layout_mode = 2
+offset_left = 500.0
+offset_right = 685.0
+offset_bottom = 100.0
+theme = ExtResource("2_way3g")
+text = "Apply"
+
+[node name="sprint_input2" type="Button" parent="ControlMargin/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(500, 96)
+layout_mode = 2
+
+[node name="HboxContainer" type="HBoxContainer" parent="ControlMargin/HBoxContainer/VBoxContainer2/sprint_input2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="ControlMargin/HBoxContainer/VBoxContainer2/sprint_input2/HboxContainer"]
+layout_mode = 2
+theme = ExtResource("2_way3g")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Sprint:"
+
+[node name="TextureRect" type="TextureRect" parent="ControlMargin/HBoxContainer/VBoxContainer2/sprint_input2/HboxContainer"]
+layout_mode = 2
+texture = ExtResource("11_513b6")
+
+[node name="sprint_input_apply" type="Button" parent="ControlMargin/HBoxContainer/VBoxContainer2/sprint_input2"]
+visible = false
+layout_mode = 2
+offset_left = 500.0
+offset_right = 685.0
+offset_bottom = 100.0
+theme = ExtResource("2_way3g")
+text = "Apply"
+
+[node name="pickup_input3" type="Button" parent="ControlMargin/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(500, 96)
+layout_mode = 2
+
+[node name="HboxContainer" type="HBoxContainer" parent="ControlMargin/HBoxContainer/VBoxContainer2/pickup_input3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="ControlMargin/HBoxContainer/VBoxContainer2/pickup_input3/HboxContainer"]
+layout_mode = 2
+theme = ExtResource("2_way3g")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Pick Up:"
+
+[node name="TextureRect" type="TextureRect" parent="ControlMargin/HBoxContainer/VBoxContainer2/pickup_input3/HboxContainer"]
+layout_mode = 2
+texture = ExtResource("12_6xyjw")
+
+[node name="pickup_input_apply" type="Button" parent="ControlMargin/HBoxContainer/VBoxContainer2/pickup_input3"]
+visible = false
+layout_mode = 2
+offset_left = 500.0
+offset_right = 685.0
+offset_bottom = 100.0
+theme = ExtResource("2_way3g")
+text = "Apply"
+
+[node name="drop_input4" type="Button" parent="ControlMargin/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(500, 96)
+layout_mode = 2
+
+[node name="HboxContainer" type="HBoxContainer" parent="ControlMargin/HBoxContainer/VBoxContainer2/drop_input4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="ControlMargin/HBoxContainer/VBoxContainer2/drop_input4/HboxContainer"]
+layout_mode = 2
+theme = ExtResource("2_way3g")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Drop:"
+
+[node name="TextureRect" type="TextureRect" parent="ControlMargin/HBoxContainer/VBoxContainer2/drop_input4/HboxContainer"]
+layout_mode = 2
+texture = ExtResource("13_2cc5k")
+
+[node name="drop_input_apply" type="Button" parent="ControlMargin/HBoxContainer/VBoxContainer2/drop_input4"]
+visible = false
+layout_mode = 2
+offset_left = 500.0
+offset_right = 685.0
+offset_bottom = 100.0
+theme = ExtResource("2_way3g")
+text = "Apply"
+
+[node name="sensContainer" type="VBoxContainer" parent="ControlMargin/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="ControlMargin/HBoxContainer/VBoxContainer2/sensContainer"]
+layout_mode = 2
+theme = ExtResource("2_way3g")
+theme_override_font_sizes/font_size = 48
+text = "Sensitivity: 10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="sensSlider" type="HSlider" parent="ControlMargin/HBoxContainer/VBoxContainer2/sensContainer"]
+layout_mode = 2
+value = 10.0
 
 [node name="AudioMargin" type="MarginContainer" parent="."]
 visible = false
@@ -461,16 +697,6 @@ libraries = {
 "": SubResource("AnimationLibrary_y6e15")
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-
-[node name="Label" type="Label" parent="HBoxContainer"]
-layout_mode = 2
-theme = ExtResource("2_way3g")
-text = "SET INPUT TO: "
-
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Graphics_setting_button" to="." method="_on_graphics_setting_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/control_setting_button2" to="." method="_on_control_setting_button_2_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/audio_setting_button" to="." method="_on_audio_setting_button_pressed"]
@@ -482,8 +708,24 @@ text = "SET INPUT TO: "
 [connection signal="toggled" from="GraphicsMargin/VBoxContainer/show_fpsCheckBox" to="." method="_on_show_fps_check_box_toggled"]
 [connection signal="pressed" from="GraphicsMargin/VBoxContainer/Back_to_options" to="." method="_on_back_to_options_pressed"]
 [connection signal="toggled" from="GraphicsMargin/VBoxContainer/CheckBox" to="." method="_on_check_box_toggled"]
-[connection signal="button_down" from="ControlMargin/VBoxContainer/forwards_input" to="ControlMargin" method="_on_forwards_input_button_down"]
-[connection signal="button_down" from="ControlMargin/VBoxContainer/backwards_input" to="ControlMargin" method="_on_backwards_input_button_down"]
+[connection signal="button_down" from="ControlMargin/HBoxContainer/VBoxContainer/forwards_input" to="ControlMargin" method="_on_forwards_input_button_down"]
+[connection signal="pressed" from="ControlMargin/HBoxContainer/VBoxContainer/forwards_input/forwards_input_apply" to="ControlMargin" method="_on_forwards_input_apply_pressed"]
+[connection signal="button_down" from="ControlMargin/HBoxContainer/VBoxContainer/backwards_input" to="ControlMargin" method="_on_backwards_input_button_down"]
+[connection signal="pressed" from="ControlMargin/HBoxContainer/VBoxContainer/backwards_input/backwards_input_apply" to="ControlMargin" method="_on_backwards_input_apply_pressed"]
+[connection signal="pressed" from="ControlMargin/HBoxContainer/VBoxContainer/right_input" to="ControlMargin" method="_on_right_input_pressed"]
+[connection signal="pressed" from="ControlMargin/HBoxContainer/VBoxContainer/right_input/right_input_apply" to="ControlMargin" method="_on_right_input_apply_pressed"]
+[connection signal="button_down" from="ControlMargin/HBoxContainer/VBoxContainer/left_input" to="ControlMargin" method="_on_left_input_button_down"]
+[connection signal="pressed" from="ControlMargin/HBoxContainer/VBoxContainer/left_input/left_input_apply" to="ControlMargin" method="_on_left_input_apply_pressed"]
+[connection signal="button_down" from="ControlMargin/HBoxContainer/VBoxContainer/Back_to_options_control" to="." method="_on_back_to_options_control_button_down"]
+[connection signal="button_down" from="ControlMargin/HBoxContainer/VBoxContainer2/jump_input" to="ControlMargin" method="_on_jump_input_button_down"]
+[connection signal="pressed" from="ControlMargin/HBoxContainer/VBoxContainer2/jump_input/jump_input_apply" to="ControlMargin" method="_on_jump_input_apply_pressed"]
+[connection signal="pressed" from="ControlMargin/HBoxContainer/VBoxContainer2/sprint_input2" to="ControlMargin" method="_on_sprint_input_2_pressed"]
+[connection signal="pressed" from="ControlMargin/HBoxContainer/VBoxContainer2/sprint_input2/sprint_input_apply" to="ControlMargin" method="_on_sprint_input_apply_pressed"]
+[connection signal="pressed" from="ControlMargin/HBoxContainer/VBoxContainer2/pickup_input3" to="ControlMargin" method="_on_pickup_input_3_pressed"]
+[connection signal="pressed" from="ControlMargin/HBoxContainer/VBoxContainer2/pickup_input3/pickup_input_apply" to="ControlMargin" method="_on_pickup_input_apply_pressed"]
+[connection signal="pressed" from="ControlMargin/HBoxContainer/VBoxContainer2/drop_input4" to="ControlMargin" method="_on_drop_input_4_pressed"]
+[connection signal="pressed" from="ControlMargin/HBoxContainer/VBoxContainer2/drop_input4/drop_input_apply" to="ControlMargin" method="_on_drop_input_apply_pressed"]
+[connection signal="value_changed" from="ControlMargin/HBoxContainer/VBoxContainer2/sensContainer/sensSlider" to="ControlMargin" method="_on_sens_slider_value_changed"]
 [connection signal="value_changed" from="AudioMargin/VBoxContainer/master_audio/m_audio_slider" to="." method="_on_m_audio_slider_value_changed"]
 [connection signal="value_changed" from="AudioMargin/VBoxContainer/gui_audio/ui_audio_slider" to="." method="_on_ui_audio_slider_value_changed"]
 [connection signal="pressed" from="AudioMargin/VBoxContainer/Back_to_options_audio" to="." method="_on_back_to_options_audio_pressed"]

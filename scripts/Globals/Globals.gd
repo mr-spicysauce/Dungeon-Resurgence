@@ -40,6 +40,7 @@ var master_sound_db = 0
 var ui_sound_dp = 0
 var show_fps = false
 var show_advanced_debug = false
+var sensitivity = 10
 
 #func  _ready():
 #	print(Item_list.get("short_sword").get("damage"))

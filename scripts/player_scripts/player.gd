@@ -151,7 +151,7 @@ func _input(event: InputEvent) -> void:
 			can_atk = true
 
 func _physics_process(delta: float) -> void:
-	
+	camera_sens = GVar.sensitivity
 	GVar.player_pos = global_transform.origin
 	GVar.player_rotation = self.rotation_degrees
 	GVar.item_drop_pos = $Camera/spawn_item.global_position

@@ -118,16 +118,26 @@ func _on_back_to_options_pressed():
 	$GraphicsMargin.hide()
 	$AnimationPlayer.play_backwards("options_move")
 
-func _on_control_setting_button_2_pressed(): #todo
+func _on_control_setting_button_2_pressed():
 	GSound.click()
 	$AnimationPlayer.play("options_move")
 	await get_tree().create_timer(0.4).timeout
 	$MarginContainer.hide()
 	position = Vector2(-300,0)
-	$GraphicsMargin.show()
-	$AnimationPlayer.play_backwards("move_graphics")
+	$ControlMargin.show()
+	$AnimationPlayer.play_backwards("options_move")
 
-func _on_audio_setting_button_pressed(): #todo
+func _on_back_to_options_control_button_down():
+	GSound.click()
+	$AnimationPlayer.play("options_move")
+	await get_tree().create_timer(0.4).timeout
+	$ControlMargin.hide()
+	position = Vector2(-300,0)
+	$MarginContainer.show()
+	$AnimationPlayer.play_backwards("options_move")
+
+
+func _on_audio_setting_button_pressed():
 	GSound.click()
 	$AnimationPlayer.play("options_move")
 	await get_tree().create_timer(0.4).timeout
