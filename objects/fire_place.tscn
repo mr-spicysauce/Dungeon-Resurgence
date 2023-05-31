@@ -1,6 +1,7 @@
-[gd_scene load_steps=58 format=3 uid="uid://dj80fb6thkpvd"]
+[gd_scene load_steps=59 format=3 uid="uid://dj80fb6thkpvd"]
 
 [ext_resource type="Script" path="res://scripts/fire_place.gd" id="1_eb7cy"]
+[ext_resource type="AudioStream" uid="uid://huoohq1b1jxd" path="res://sound_effects/camp_fire.ogg" id="2_5xf2i"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3tk6g"]
 resource_name = "stone"
@@ -985,6 +986,7 @@ draw_pass_1 = SubResource("BoxMesh_kv8jx")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 light_color = Color(1, 0.815686, 0, 1)
 light_energy = 2.0
+shadow_enabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -998,4 +1000,9 @@ randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_4o53b")
 draw_pass_1 = SubResource("BoxMesh_w8kg2")
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_5xf2i")
+autoplay = true
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="finished" from="AudioStreamPlayer3D" to="." method="_on_audio_stream_player_3d_finished"]

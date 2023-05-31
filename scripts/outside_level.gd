@@ -67,3 +67,6 @@ func _on_start_game_pressed():
 	if GVar.can_buy_item == true:
 		get_tree().change_scene_to_file("res://levels/lvl_1.tscn")
 		GVar.difficulty = 1
+
+func _on_audio_stream_player_finished():
+	$AudioStreamPlayer.play()

@@ -187,14 +187,11 @@ _data = {
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 3840.0
-offset_bottom = 2160.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_yd3lx")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 32
 
@@ -336,6 +333,7 @@ size_flags_vertical = 0
 text = "Dev Debug menu"
 
 [node name="ControlMargin" type="MarginContainer" parent="."]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_constants/margin_left = 32
@@ -665,6 +663,7 @@ rounded = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AudioMargin/VBoxContainer/master_audio"]
 stream = ExtResource("5_5oaq3")
+volume_db = 5.0
 
 [node name="gui_audio" type="VBoxContainer" parent="AudioMargin/VBoxContainer"]
 layout_mode = 2
@@ -685,6 +684,27 @@ rounded = true
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AudioMargin/VBoxContainer/gui_audio"]
 stream = ExtResource("6_2uman")
 bus = &"UI"
+
+[node name="background_audio" type="VBoxContainer" parent="AudioMargin/VBoxContainer"]
+layout_mode = 2
+
+[node name="bg_audio_text" type="Label" parent="AudioMargin/VBoxContainer/background_audio"]
+layout_mode = 2
+theme = ExtResource("2_way3g")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Ambient Audio: +0db"
+
+[node name="bg_audio_slider" type="HSlider" parent="AudioMargin/VBoxContainer/background_audio"]
+layout_mode = 2
+min_value = -20.0
+max_value = 20.0
+rounded = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AudioMargin/VBoxContainer/background_audio"]
+stream = ExtResource("6_2uman")
+volume_db = -10.0
+bus = &"Background"
 
 [node name="Back_to_options_audio" type="Button" parent="AudioMargin/VBoxContainer"]
 layout_mode = 2
@@ -728,4 +748,5 @@ libraries = {
 [connection signal="value_changed" from="ControlMargin/HBoxContainer/VBoxContainer2/sensContainer/sensSlider" to="ControlMargin" method="_on_sens_slider_value_changed"]
 [connection signal="value_changed" from="AudioMargin/VBoxContainer/master_audio/m_audio_slider" to="." method="_on_m_audio_slider_value_changed"]
 [connection signal="value_changed" from="AudioMargin/VBoxContainer/gui_audio/ui_audio_slider" to="." method="_on_ui_audio_slider_value_changed"]
+[connection signal="value_changed" from="AudioMargin/VBoxContainer/background_audio/bg_audio_slider" to="." method="_on_bg_audio_slider_value_changed"]
 [connection signal="pressed" from="AudioMargin/VBoxContainer/Back_to_options_audio" to="." method="_on_back_to_options_audio_pressed"]

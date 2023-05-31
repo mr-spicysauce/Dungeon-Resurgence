@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cidqp54opm48g"]
+[gd_scene load_steps=36 format=3 uid="uid://cidqp54opm48g"]
 
 [ext_resource type="Script" path="res://scripts/outside_level.gd" id="1_bj8cu"]
 [ext_resource type="PackedScene" uid="uid://c07yfqxab6ydh" path="res://scripts/Globals/globals.tscn" id="2_nnfs4"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scripts/shop.gd" id="7_u2y70"]
 [ext_resource type="FontFile" uid="uid://bwhmtrx4idt2x" path="res://recorces/fonts/Lexend-SemiBold.ttf" id="8_xgry7"]
 [ext_resource type="Texture2D" uid="uid://nf0yxtmstn41" path="res://icon.svg" id="10_g1xpk"]
+[ext_resource type="AudioStream" uid="uid://il6c4oq7b3wc" path="res://sound_effects/night_outside_background.wav" id="11_kaq76"]
 [ext_resource type="Theme" uid="uid://dg7yqs5xm6yb3" path="res://recorces/themes/Menu_theme.tres" id="17_3c0wl"]
 
 [sub_resource type="Animation" id="Animation_lfipy"]
@@ -1692,6 +1693,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.87, 4.5, 0.112)
 billboard = 2
 texture = SubResource("ViewportTexture_pr61a")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_kaq76")
+autoplay = true
+bus = &"Background"
+
 [connection signal="animation_finished" from="Move_head" to="." method="_on_move_head_animation_finished"]
 [connection signal="mouse_entered" from="SHOP TEXT/MarginContainer/Button" to="." method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="SHOP TEXT/MarginContainer/Button" to="." method="_on_button_mouse_exited"]
@@ -1710,3 +1716,4 @@ texture = SubResource("ViewportTexture_pr61a")
 [connection signal="pressed" from="SHOP TEXT/MarginContainer2/MarginContainer/VBoxContainer/HBoxContainer/Go_out_shop" to="." method="_on_go_out_shop_pressed"]
 [connection signal="confirmed" from="SHOP TEXT/MarginContainer2/ConfirmationDialog" to="SHOP TEXT/Shop_sorter" method="_on_confirmation_dialog_confirmed"]
 [connection signal="animation_finished" from="Shop_text_bounce" to="." method="_on_shop_text_bounce_animation_finished"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

@@ -38,6 +38,7 @@ var difficulty = 1
 var can_buy_item = true
 var master_sound_db = 0
 var ui_sound_dp = 0
+var bg_sound_db = 0
 var show_fps = false
 var show_advanced_debug = false
 var sensitivity = 10

@@ -37,3 +37,6 @@ func spawn_bad_guy(ammount):
 		print(random_spawn_pos)
 		add_child(goblin_short_sword)
 		goblin_short_sword.global_position = random_spawn_pos
+
+func _on_audio_stream_player_finished():
+	$AudioStreamPlayer.play()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dyg4oqe12cdbr"]
+[gd_scene load_steps=31 format=3 uid="uid://dyg4oqe12cdbr"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_q1bp6"]
 [ext_resource type="Theme" uid="uid://dg7yqs5xm6yb3" path="res://recorces/themes/Menu_theme.tres" id="2_wotep"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://scripts/Load_Game_2.gd" id="10_387k6"]
 [ext_resource type="Theme" uid="uid://dqa7rgvfsa0gk" path="res://recorces/themes/Popup_box.tres" id="10_j86vm"]
 [ext_resource type="Script" path="res://scripts/Load_Game_3.gd" id="11_lay2n"]
+[ext_resource type="AudioStream" uid="uid://bohsupqfd5jnf" path="res://sound_effects/day_outside_background.wav" id="16_f2f3b"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_jcrjp"]
 
@@ -450,8 +451,8 @@ alignment = 0
 [node name="Option_menu" parent="Control" instance=ExtResource("4_k1ati")]
 visible = false
 layout_mode = 1
-offset_right = 12376.0
-offset_bottom = 7372.0
+offset_right = 25816.0
+offset_bottom = 14932.0
 
 [node name="HBox_startgame" type="HBoxContainer" parent="Control"]
 visible = false
@@ -925,6 +926,11 @@ alignment = 0
 [node name="FirePlace" parent="." instance=ExtResource("6_ys0h1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6, 0, -3.5)
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_f2f3b")
+autoplay = true
+bus = &"Background"
+
 [connection signal="animation_finished" from="Sun/Day-night" to="." method="_on_daynight_animation_finished"]
 [connection signal="pressed" from="Control/HBox_Main_menu/MarginContainer/VBoxContainer/PlayGameButton" to="." method="_on_play_game_button_pressed"]
 [connection signal="pressed" from="Control/HBox_Main_menu/MarginContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
@@ -951,3 +957,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6, 0, -3.5)
 [connection signal="confirmed" from="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_3/Start_new" to="Control/HBox_startgame/MarginContainer/VBoxContainer/Load_Game_3" method="_on_start_new_confirmed"]
 [connection signal="pressed" from="Control/HBox_startgame/MarginContainer/VBoxContainer/New_Game_Test_Button" to="Control/HBox_startgame" method="_on_new_game_button_pressed"]
 [connection signal="pressed" from="Control/HBox_startgame/MarginContainer/VBoxContainer/Back_Button" to="." method="_on_back_button_pressed"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

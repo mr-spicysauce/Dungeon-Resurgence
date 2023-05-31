@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://ct500abp555l4"]
+[gd_scene load_steps=19 format=3 uid="uid://ct500abp555l4"]
 
 [ext_resource type="Theme" uid="uid://dg7yqs5xm6yb3" path="res://recorces/themes/Menu_theme.tres" id="1_87h80"]
 [ext_resource type="Script" path="res://scripts/death_screen.gd" id="1_sitnw"]
 [ext_resource type="Script" path="res://scripts/Death_screen_hotbar.gd" id="3_asga8"]
 [ext_resource type="Texture2D" uid="uid://tg0wtbcpt4ed" path="res://recorces/GUI/Hotbar slot.png" id="3_gq8ao"]
 [ext_resource type="Texture2D" uid="uid://cr3p8o7najfnu" path="res://recorces/GUI/selector.png" id="5_qr1gv"]
+[ext_resource type="AudioStream" uid="uid://d02b0c77c7vyq" path="res://sound_effects/death_screen.wav" id="6_85u5v"]
 
 [sub_resource type="Animation" id="Animation_sdgki"]
 length = 0.001
@@ -277,6 +278,43 @@ _data = {
 "slot6_fade": SubResource("Animation_gd42w")
 }
 
+[sub_resource type="Animation" id="Animation_34u8u"]
+resource_name = "fade audio"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -80.0]
+}
+
+[sub_resource type="Animation" id="Animation_2m01d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i7uos"]
+_data = {
+"RESET": SubResource("Animation_2m01d"),
+"fade audio": SubResource("Animation_34u8u")
+}
+
 [node name="Death_screen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -515,3 +553,13 @@ offset_right = 44.0
 offset_bottom = -25.0
 grow_horizontal = 2
 texture = ExtResource("5_qr1gv")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_85u5v")
+autoplay = true
+bus = &"Background"
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_i7uos")
+}

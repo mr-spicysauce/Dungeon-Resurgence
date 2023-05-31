@@ -41,6 +41,7 @@ func spin(ammount):
 		
 	print(str(current_slot) + "will be deleted")
 	if current_slot ==1:
+		background_sound_fade()
 		$AnimationPlayer.play("slot1_fade")
 		await get_tree().create_timer(2).timeout
 		GVar.Item1 = null
@@ -48,6 +49,7 @@ func spin(ammount):
 		SaveGame.save_game()
 		change()
 	elif current_slot == 2:
+		background_sound_fade()
 		$AnimationPlayer.play("slot2_fade")
 		await get_tree().create_timer(2).timeout
 		GVar.Item2 = null
@@ -55,6 +57,7 @@ func spin(ammount):
 		SaveGame.save_game()
 		change()
 	elif current_slot == 3:
+		background_sound_fade()
 		$AnimationPlayer.play("slot3_fade")
 		await get_tree().create_timer(2).timeout
 		GVar.Item3 = null
@@ -62,6 +65,7 @@ func spin(ammount):
 		SaveGame.save_game()
 		change()
 	elif current_slot == 4:
+		background_sound_fade()
 		$AnimationPlayer.play("slot4_fade")
 		await get_tree().create_timer(2).timeout
 		GVar.Item4 = null
@@ -69,6 +73,7 @@ func spin(ammount):
 		SaveGame.save_game()
 		change()
 	elif current_slot == 5:
+		background_sound_fade()
 		$AnimationPlayer.play("slot5_fade")
 		await get_tree().create_timer(2).timeout
 		GVar.Item5 = null
@@ -76,6 +81,7 @@ func spin(ammount):
 		SaveGame.save_game()
 		change()
 	elif current_slot == 6 or current_slot == 7:
+		background_sound_fade()
 		$AnimationPlayer.play("slot6_fade")
 		await get_tree().create_timer(2).timeout
 		GVar.Coins = (GVar.Coins * 0.9)
@@ -83,6 +89,9 @@ func spin(ammount):
 		GVar.Max_health = 100
 		SaveGame.save_game()
 		change()
+
+func background_sound_fade():
+	$AnimationPlayer2.play("fade audio")
 
 func change():
 	if GVar.just_quit == true:

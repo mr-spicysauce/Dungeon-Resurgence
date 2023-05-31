@@ -6,6 +6,7 @@ extends HBoxContainer
 
 var master_bus = AudioServer.get_bus_index("Master")
 var UI_bus = AudioServer.get_bus_index("UI")
+var Background_bus = AudioServer.get_bus_index("Background")
 
 var vsync = false
 
@@ -206,3 +207,20 @@ func _on_ui_audio_slider_value_changed(value):
 	else:
 		AudioServer.set_bus_mute(UI_bus,false)
 		$AudioMargin/VBoxContainer/gui_audio/gui_audio_text.text = "Menu Audio: " + str(value) +"db"
+
+func _on_bg_audio_slider_value_changed(value):
+	
+	$AudioMargin/VBoxContainer/background_audio/AudioStreamPlayer.play()
+	
+	AudioServer.set_bus_volume_db(Background_bus, value)
+	GVar.bg_sound_db = value
+	
+	if value == -20:
+		AudioServer.set_bus_mute(Background_bus,true)
+		$AudioMargin/VBoxContainer/background_audio/bg_audio_text.text = "Ambient Audio: MUTE"
+	elif value >= 0:
+		AudioServer.set_bus_mute(Background_bus,false)
+		$AudioMargin/VBoxContainer/background_audio/bg_audio_text.text = "Ambient Audio: +" + str(value) +"db"
+	else:
+		AudioServer.set_bus_mute(Background_bus,false)
+		$AudioMargin/VBoxContainer/background_audio/bg_audio_text.text = "Ambient Audio: " + str(value) +"db"
