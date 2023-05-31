@@ -1,10 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://dc5yft1fyvocb"]
+[gd_scene load_steps=14 format=3 uid="uid://dc5yft1fyvocb"]
 
 [ext_resource type="Script" path="res://scripts/Options_menu.gd" id="1_yd3lx"]
 [ext_resource type="Theme" uid="uid://dg7yqs5xm6yb3" path="res://recorces/themes/Menu_theme.tres" id="2_way3g"]
 [ext_resource type="Texture2D" uid="uid://bu6p81e40xadq" path="res://recorces/GUI/slected_box.png" id="3_gjwy3"]
 [ext_resource type="Texture2D" uid="uid://bjr1nvr3t58mk" path="res://recorces/GUI/unslected_box.png" id="4_clj8u"]
 [ext_resource type="AudioStream" uid="uid://0ylyxebul06h" path="res://sound_effects/click.wav" id="5_5oaq3"]
+[ext_resource type="Texture2D" uid="uid://dojuhsnrab08o" path="res://recorces/Xelu_Free_Controller&Key_Prompts/Keyboard & Mouse/Light/0_Key_Light.png" id="5_krlmo"]
+[ext_resource type="Script" path="res://scripts/ControlSettings.gd" id="5_tvpn6"]
+[ext_resource type="AudioStream" uid="uid://c7qk1wh0scohr" path="res://sound_effects/button_click.wav" id="6_2uman"]
 
 [sub_resource type="Animation" id="Animation_yfcc3"]
 length = 0.001
@@ -174,8 +177,11 @@ _data = {
 }
 
 [node name="HBox_Options_menu" type="HBoxContainer"]
-offset_right = 1920.0
-offset_bottom = 1080.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_yd3lx")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -213,6 +219,7 @@ text = "Back"
 alignment = 0
 
 [node name="GraphicsMargin" type="MarginContainer" parent="."]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_constants/margin_left = 32
@@ -320,15 +327,77 @@ size_flags_vertical = 0
 text = "Dev Debug menu"
 
 [node name="ControlMargin" type="MarginContainer" parent="."]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_constants/margin_left = 32
+script = ExtResource("5_tvpn6")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ControlMargin"]
 layout_mode = 2
 theme_override_constants/separation = 32
 alignment = 1
+
+[node name="forwards_input" type="Button" parent="ControlMargin/VBoxContainer"]
+custom_minimum_size = Vector2(500, 96)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="HboxContainer" type="HBoxContainer" parent="ControlMargin/VBoxContainer/forwards_input"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="ControlMargin/VBoxContainer/forwards_input/HboxContainer"]
+layout_mode = 2
+theme = ExtResource("2_way3g")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Forwards:"
+
+[node name="TextureRect" type="TextureRect" parent="ControlMargin/VBoxContainer/forwards_input/HboxContainer"]
+layout_mode = 2
+texture = ExtResource("5_krlmo")
+
+[node name="backwards_input" type="Button" parent="ControlMargin/VBoxContainer"]
+custom_minimum_size = Vector2(500, 96)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="HboxContainer" type="HBoxContainer" parent="ControlMargin/VBoxContainer/backwards_input"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -236.5
+offset_top = -50.0
+offset_right = 236.5
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="ControlMargin/VBoxContainer/backwards_input/HboxContainer"]
+layout_mode = 2
+theme = ExtResource("2_way3g")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Backwards:"
+
+[node name="TextureRect" type="TextureRect" parent="ControlMargin/VBoxContainer/backwards_input/HboxContainer"]
+layout_mode = 2
+texture = ExtResource("5_krlmo")
+
+[node name="Back_to_options_control" type="Button" parent="ControlMargin/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_way3g")
+text = "Back"
+alignment = 0
 
 [node name="AudioMargin" type="MarginContainer" parent="."]
 visible = false
@@ -361,22 +430,25 @@ rounded = true
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AudioMargin/VBoxContainer/master_audio"]
 stream = ExtResource("5_5oaq3")
 
-[node name="background_audio" type="VBoxContainer" parent="AudioMargin/VBoxContainer"]
-visible = false
+[node name="gui_audio" type="VBoxContainer" parent="AudioMargin/VBoxContainer"]
 layout_mode = 2
 
-[node name="b_audio_text" type="Label" parent="AudioMargin/VBoxContainer/background_audio"]
+[node name="gui_audio_text" type="Label" parent="AudioMargin/VBoxContainer/gui_audio"]
 layout_mode = 2
 theme = ExtResource("2_way3g")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
-text = "Ambient Audio: 100%"
+text = "Menu Audio: +0db"
 
-[node name="b_audio_slider" type="HSlider" parent="AudioMargin/VBoxContainer/background_audio"]
-custom_minimum_size = Vector2(200, 0)
+[node name="ui_audio_slider" type="HSlider" parent="AudioMargin/VBoxContainer/gui_audio"]
 layout_mode = 2
-value = 100.0
+min_value = -20.0
+max_value = 20.0
 rounded = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AudioMargin/VBoxContainer/gui_audio"]
+stream = ExtResource("6_2uman")
+bus = &"UI"
 
 [node name="Back_to_options_audio" type="Button" parent="AudioMargin/VBoxContainer"]
 layout_mode = 2
@@ -389,6 +461,16 @@ libraries = {
 "": SubResource("AnimationLibrary_y6e15")
 }
 
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_way3g")
+text = "SET INPUT TO: "
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Graphics_setting_button" to="." method="_on_graphics_setting_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/control_setting_button2" to="." method="_on_control_setting_button_2_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/audio_setting_button" to="." method="_on_audio_setting_button_pressed"]
@@ -400,6 +482,8 @@ libraries = {
 [connection signal="toggled" from="GraphicsMargin/VBoxContainer/show_fpsCheckBox" to="." method="_on_show_fps_check_box_toggled"]
 [connection signal="pressed" from="GraphicsMargin/VBoxContainer/Back_to_options" to="." method="_on_back_to_options_pressed"]
 [connection signal="toggled" from="GraphicsMargin/VBoxContainer/CheckBox" to="." method="_on_check_box_toggled"]
+[connection signal="button_down" from="ControlMargin/VBoxContainer/forwards_input" to="ControlMargin" method="_on_forwards_input_button_down"]
+[connection signal="button_down" from="ControlMargin/VBoxContainer/backwards_input" to="ControlMargin" method="_on_backwards_input_button_down"]
 [connection signal="value_changed" from="AudioMargin/VBoxContainer/master_audio/m_audio_slider" to="." method="_on_m_audio_slider_value_changed"]
-[connection signal="value_changed" from="AudioMargin/VBoxContainer/background_audio/b_audio_slider" to="." method="_on_b_audio_slider_value_changed"]
+[connection signal="value_changed" from="AudioMargin/VBoxContainer/gui_audio/ui_audio_slider" to="." method="_on_ui_audio_slider_value_changed"]
 [connection signal="pressed" from="AudioMargin/VBoxContainer/Back_to_options_audio" to="." method="_on_back_to_options_audio_pressed"]

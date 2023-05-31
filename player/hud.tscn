@@ -94,6 +94,7 @@ mouse_filter = 2
 script = ExtResource("1_kochb")
 
 [node name="DebugMenu" parent="." instance=ExtResource("17_neqsl")]
+visible = false
 layout_mode = 1
 
 [node name="InventrySystem" parent="." instance=ExtResource("1_r4xxl")]
@@ -299,7 +300,6 @@ text = "COINS: 0
 "
 
 [node name="esc_menu" type="MarginContainer" parent="."]
-visible = false
 layout_mode = 1
 offset_right = 1920.0
 offset_bottom = 1080.0

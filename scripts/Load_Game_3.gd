@@ -40,6 +40,7 @@ func _ready():
 		$MarginContainer/VBoxContainer/New_Game.show()
 
 func _on_load_game_3_button_down():
+	GSound.click()
 	if save_exsits == true and open == false:
 		open = true
 		self.texture = Clicked_bg
@@ -56,15 +57,19 @@ func _on_load_game_3_button_down():
 		$Start_new.popup_centered()
 
 func _on_start_new_canceled():
+	GSound.click()
 	self.texture = no_clicked_bg
 
 func _on_overwrite_button_down():
+	GSound.click()
 	$ConfirmationDialog.popup_centered()
 
 func _on_confirmation_dialog_confirmed():
+	GSound.click()
 	new_game_fade()
 
 func _on_start_new_confirmed():
+	GSound.click()
 	new_game_fade()
 
 func new_game_fade():

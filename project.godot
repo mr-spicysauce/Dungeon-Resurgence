@@ -23,14 +23,15 @@ GVar="*res://scripts/Globals/Globals.gd"
 LoadGame="*res://scripts/load_game.tscn"
 NewGame="*res://scripts/new_game.tscn"
 SaveGame="*res://scripts/save_game.tscn"
+GSound="*res://scripts/Globals/GSound.gd"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=3
-window/vsync/vsync_mode=0
 window/stretch/mode="viewport"
+window/vsync/vsync_mode=0
 
 [editor_plugins]
 

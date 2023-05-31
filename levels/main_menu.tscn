@@ -450,13 +450,8 @@ alignment = 0
 [node name="Option_menu" parent="Control" instance=ExtResource("4_k1ati")]
 visible = false
 layout_mode = 1
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
 offset_right = 856.0
-offset_bottom = 648.0
-grow_horizontal = 1
-grow_vertical = 1
+offset_bottom = 892.0
 
 [node name="HBox_startgame" type="HBoxContainer" parent="Control"]
 visible = false

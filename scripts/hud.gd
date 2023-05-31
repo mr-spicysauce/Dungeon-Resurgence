@@ -27,6 +27,7 @@ func _input(event):
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _on_continue_pressed():
+	GSound.click()
 	get_tree().paused = false
 	$AnimationPlayer.play("open_esc")
 	await get_tree().create_timer(0.2).timeout
@@ -37,9 +38,11 @@ func _on_continue_pressed():
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _on_save_and_quit_pressed():
+	GSound.click()
 	$ConfirmationDialog.popup_centered()
 
 func _on_confirmation_dialog_confirmed():
+	GSound.click()
 	GVar.just_quit = true
 	get_tree().paused = false
 	get_parent().take_damage(999)
@@ -53,12 +56,15 @@ func save_the_game():
 		SaveGame.Save_Game3_data()
 
 func _on_temp_quit_pressed():
+	GSound.click()
 	get_tree().quit()
 
 func _on_save_and_quit_normal_pressed():
+	GSound.click()
 	$ConfirmationDialog2.popup_centered()
 
 func _on_confirmation_dialog_2_confirmed():
+	GSound.click()
 	SaveGame.save_game()
 	$AnimationPlayer.play_backwards("open_esc")
 	await get_tree().create_timer(0.2).timeout
@@ -72,6 +78,7 @@ func hide_options():
 	$AnimationPlayer.play_backwards("open_esc")
 
 func _on_settings_pressed():
+	GSound.click()
 	$AnimationPlayer.play("open_esc")
 	await get_tree().create_timer(0.4).timeout
 	$esc_menu/HBoxContainer.hide()

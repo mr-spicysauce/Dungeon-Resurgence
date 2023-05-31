@@ -5,6 +5,7 @@ extends HBoxContainer
 @onready var res_drop_down = $GraphicsMargin/VBoxContainer/resolution/OptionButton
 
 var master_bus = AudioServer.get_bus_index("Master")
+var UI_bus = AudioServer.get_bus_index("UI")
 
 var vsync = false
 
@@ -13,11 +14,14 @@ func _ready():
 	add_res_items()
 	get_screen_size_drop_menu()
 	$AudioMargin/VBoxContainer/master_audio/m_audio_slider.value = GVar.master_sound_db
+	$AudioMargin/VBoxContainer/gui_audio/ui_audio_slider.value = GVar.ui_sound_dp
 
 func _on_back_to_mainmenu_button_pressed():
+	GSound.click()
 	get_parent().get_parent().hide_options()
 
 func _on_full_screen_check_box_toggled(button_pressed):
+	GSound.click()
 	if button_pressed == true:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 		get_screen_size_drop_menu()
@@ -36,6 +40,7 @@ func add_res_items():
 	res_drop_down.add_item("3840x2160")
 
 func _on_option_button_item_selected(index):
+	GSound.click()
 	var current_slected = index
 	print(current_slected)
 	
@@ -78,6 +83,7 @@ func get_screen_size_drop_menu():
 		res_drop_down.selected = 6
 
 func _on_vsync_check_box_toggled(button_pressed):
+	GSound.click()
 	if button_pressed == true:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
 		$GraphicsMargin/VBoxContainer/limitFPS.hide()
@@ -88,12 +94,14 @@ func _on_vsync_check_box_toggled(button_pressed):
 		Engine.max_fps = $GraphicsMargin/VBoxContainer/limitFPS/HSlider.value
 
 func _on_show_fps_check_box_toggled(button_pressed):
+	GSound.click()
 	if button_pressed == true:
 		GVar.show_fps = true
 	else:
 		GVar.show_fps = false
 
 func _on_graphics_setting_button_pressed():
+	GSound.click()
 	$AnimationPlayer.play("options_move")
 	await get_tree().create_timer(0.4).timeout
 	$MarginContainer.hide()
@@ -102,6 +110,7 @@ func _on_graphics_setting_button_pressed():
 	$AnimationPlayer.play_backwards("move_graphics")
 
 func _on_back_to_options_pressed():
+	GSound.click()
 	$AnimationPlayer.play("move_graphics")
 	await get_tree().create_timer(0.4).timeout
 	$MarginContainer.show()
@@ -110,6 +119,7 @@ func _on_back_to_options_pressed():
 	$AnimationPlayer.play_backwards("options_move")
 
 func _on_control_setting_button_2_pressed(): #todo
+	GSound.click()
 	$AnimationPlayer.play("options_move")
 	await get_tree().create_timer(0.4).timeout
 	$MarginContainer.hide()
@@ -118,6 +128,7 @@ func _on_control_setting_button_2_pressed(): #todo
 	$AnimationPlayer.play_backwards("move_graphics")
 
 func _on_audio_setting_button_pressed(): #todo
+	GSound.click()
 	$AnimationPlayer.play("options_move")
 	await get_tree().create_timer(0.4).timeout
 	$MarginContainer.hide()
@@ -126,6 +137,7 @@ func _on_audio_setting_button_pressed(): #todo
 	$AnimationPlayer.play_backwards("move_audio")
 
 func _on_back_to_options_audio_pressed():
+	GSound.click()
 	$AnimationPlayer.play("move_audio")
 	await get_tree().create_timer(0.4).timeout
 	$MarginContainer.show()
@@ -162,7 +174,25 @@ func _on_h_slider_value_changed(value):
 		Engine.max_fps = value
 
 func _on_check_box_toggled(button_pressed):
+	GSound.click()
 	if button_pressed == true:
 		GVar.show_advanced_debug = true
 	else:
 		GVar.show_advanced_debug = false
+
+func _on_ui_audio_slider_value_changed(value):
+	
+	$AudioMargin/VBoxContainer/gui_audio/AudioStreamPlayer.play()
+	
+	AudioServer.set_bus_volume_db(UI_bus, value)
+	GVar.ui_sound_dp = value
+	
+	if value == -20:
+		AudioServer.set_bus_mute(UI_bus,true)
+		$AudioMargin/VBoxContainer/gui_audio/gui_audio_text.text = "Menu Audio: MUTE"
+	elif value >= 0:
+		AudioServer.set_bus_mute(UI_bus,false)
+		$AudioMargin/VBoxContainer/gui_audio/gui_audio_text.text = "Menu Audio: +" + str(value) +"db"
+	else:
+		AudioServer.set_bus_mute(UI_bus,false)
+		$AudioMargin/VBoxContainer/gui_audio/gui_audio_text.text = "Menu Audio: " + str(value) +"db"
