@@ -26,20 +26,21 @@ func _on_shop_text_bounce_animation_finished(anim_name):
 	$Shop_text_bounce.play_backwards("Text_bounce")
 
 func _on_button_mouse_entered():
-	$"SHOP TEXT".modulate = Color(0, 255, 255)
+	$"SHOP TEXT/MarginContainer/Button/Label".modulate = Color(0, 255, 255)
 
 func _on_button_mouse_exited():
-	$"SHOP TEXT".modulate = Color(255, 255, 255)
+	$"SHOP TEXT/MarginContainer/Button/Label".modulate = Color(255, 255, 255)
 
 
 func _on_start_game_mouse_entered():
-	$Cave_text.modulate = Color(0, 255, 255)
+	$"SHOP TEXT/start_game_container/Start_game/Label".modulate = Color(0, 255, 255)
 
 
 func _on_start_game_mouse_exited():
-	$Cave_text.modulate = Color(255, 255, 255)
+	$"SHOP TEXT/start_game_container/Start_game/Label".modulate = Color(255, 255, 255)
 
 func _on_button_pressed():
+	GSound.click()
 	$Gotoshop.play("GotoShop")
 	$"SHOP TEXT/start_game_container/Start_game".hide()
 	$"SHOP TEXT".modulate = Color(255, 255, 255)
@@ -54,14 +55,17 @@ func _on_button_pressed():
 	
 
 func _on_go_out_shop_pressed():
+	GSound.click()
 	$"SHOP TEXT/Shop_animation".play_backwards("show_shop")
 	await get_tree().create_timer(0.5).timeout
 	$"SHOP TEXT/MarginContainer2".hide()
-	$Outside_level/shop_guy/AnimationPlayer.play("wave")
+	$Outside_level/shop_guy/MoveHead.stop()
+	$Outside_level/shop_guy/AnimationPlayer.play_backwards("wave")
 	$Gotoshop.play_backwards("GotoShop")
-	await get_tree().create_timer(2.4).timeout
+	await get_tree().create_timer(5).timeout
 	$"SHOP TEXT/MarginContainer/Button".show()
 	$"SHOP TEXT/start_game_container/Start_game".show()
+	$Outside_level/shop_guy/MoveHead.play("Move_head")
 
 func _on_start_game_pressed():
 	if GVar.can_buy_item == true:
@@ -70,3 +74,10 @@ func _on_start_game_pressed():
 
 func _on_audio_stream_player_finished():
 	$AudioStreamPlayer.play()
+
+func _input(event):
+	if event.is_action_pressed("esc"):
+		if GVar.is_ingame == true:
+			$"SHOP TEXT/MarginContainer/Button".MOUSE_FILTER_STOP
+		else:
+			$"SHOP TEXT/MarginContainer/Button".MOUSE_FILTER_IGNORE
